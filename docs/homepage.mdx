@@ -1,0 +1,103 @@
+---
+slug: /
+displayed_sidebar: homepage
+hide_table_of_contents: true
+hide_sidebar: true
+hide_title: true
+pagination_next: null
+pagination_prev: null
+hide_footer: true
+hide_feedback: false
+---
+import DocCardList from '@theme/DocCardList';
+import Button from '../src/components/Button';
+
+<center><font size = "7"> Rig Documentation </font></center>
+
+<center><font size = "3">
+Rig's development- and deployment platform accelerates development and enables easy deployment of applications in production-ready environments, 
+all while developers retain full control over their technology stack.
+</font></center>
+
+<br/>
+
+<center>
+<Button 
+  width = "200px"
+  backgroundColor = "#1A1A1A"
+  radiusColor = "#1A1A1A"
+  children = <font color="white" size="4">Get Started</font>
+  onClick={
+  () => {
+    window.open("getting-started", "_self")
+  }
+}/>  
+</center>
+
+<br/>
+
+<hr class="solid" />
+
+# Modules
+[![Capsules](/img/banners/capsules-banner.png "Capsules")](/capsules)
+[![Authentication](/img/banners/authentication-banner.png "Authentication")](/auth)
+[![User Management](/img/banners/users-banner.png "User Management")](/users)
+[![Storage](/img/banners/storage-banner.png "Storage")](/storage)
+[![Database](/img/banners/database-banner.png "Database")](/database)
+
+
+# Toolkit
+<DocCardList
+  items={
+  [
+    {
+      type: 'link',
+      href: '/sdks/golang',
+      label: 'Go Client',
+      description: "Build your own backend using the Rig Go SDK and the Rig Modules.",
+      customProps: {
+        icon: "golang",
+        col: "col--6",
+      }
+    },
+    {
+      type: 'link',
+      href: '/sdks/typescript',
+      label: 'Typescript Client',
+      description: "Use the Rig TS client and Rig modules to easily integrate Rig into your application",
+      customProps: {
+        icon: "typescript",
+        col: "col--6",
+      }
+    },
+    {
+      type: 'link',
+      href: '/getting-started/cli-setup',
+      label: 'Rig CLI',
+      description: "Manage any Rig-resources from the command line.",
+      customProps: {
+        icon: "BiTerminal",
+        col: "col--4"
+      }
+    },
+    {
+      type: 'link',
+      href: '/service-accounts',
+      label: 'Service Accounts',
+      description: "Manage your service accounts and their permissions.",
+      customProps: {
+        icon: "BiKey",
+        col: "col--4"
+      }
+    },
+    {
+      type: 'link',
+      href: '/cluster',
+      label: 'Rig Cluster',
+      description: "Manage your Rig cluster with admin users and an admin CLI.",
+      customProps: {
+        icon: "BiServer",
+        col: "col--4"
+      }
+    }
+]} />

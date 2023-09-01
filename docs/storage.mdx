@@ -1,0 +1,55 @@
+---
+sidebar_position: 1
+hide_table_of_contents: true
+pagination_next: null
+pagination_prev: null
+hide_title: true
+---
+
+import DocCardList from '@theme/DocCardList';
+import GettingStarted from '../src/markdown/prerequisites/getting-started.md'
+
+<br/>
+
+![Storage](/img/banners/storage-banner.png "Storage")
+
+Rig includes a storage module that handles storing and managing various digital content in your project. It supports various storage backends such as MinIO, AWS S3, and GCS, 
+and seamlessly incorporates these to show the stored content in a unified way.
+
+<GettingStarted />
+
+## Guides
+<DocCardList items={
+    [
+        {
+            type: 'link',
+            href: 'storage/minio',
+            label: 'Setup Minio Storage',
+            description: "Setup Minio Storage for your Rig Project.",
+            customProps: {
+                icon: "BiUser",
+                col: "col--12",
+            },
+        },
+        {
+            type: 'link',
+            href: 'storage/gcs',
+            label: 'Setup Google Cloud Storage',
+            description: "Setup Google Cloud Storage for your Rig Project",
+            customProps: {
+                icon: "BiUser",
+                col: "col--6",
+            },
+        },
+        {
+            type: 'link',
+            href: 'storage/s3',
+            label: 'Setup Amazon S3 Storage',
+            description: "Setup Amazon S3 Storage for your Rig Project",
+            customProps: {
+                icon: "BiUser",
+                col: "col--6",
+            }
+        }
+    ]
+} />

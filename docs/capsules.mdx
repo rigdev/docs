@@ -1,0 +1,33 @@
+---
+sidebar_position: 1
+hide_table_of_contents: true
+pagination_next: null
+pagination_prev: null
+hide_feedback: true
+hide_title: true
+---
+
+import GettingStarted from '../src/markdown/prerequisites/getting-started.md'
+
+<br/>
+
+![Capsules](/img/banners/capsules-banner.png "Capsules")
+
+Rig comes with a deployment engine that wraps resources in what we call *Capsules*. 
+=======
+# Capsules
+
+## Overview
+
+Rig comes with a deployment engine that wraps resources in what we call _Capsules_.
+A Capsule contains a bundle of resources which will be deployed as a unit. Those resources are
+
+- A Docker image
+- Environment variables
+- Networking configuration (load balancer/ingress)
+- Networking middleware to handle e.g. authentication
+- Number of replicas
+
+If you are familiar with Kubernetes, Capsules can be thought of as containing everything (deployment, service, ingress, etc.) needed to run and manage your application.
+
+<GettingStarted />
