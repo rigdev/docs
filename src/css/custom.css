@@ -44,9 +44,11 @@ html[data-theme='dark'] {
   --docusaurus-tag-list-border: var(--ifm-color-emphasis-100);
   --ifm-toc-border-color: var(--ifm-color-emphasis-200);
   --docusaurus-highlighted-code-line-bg: rgb(72, 77, 91);
-
 }
 
+font {
+  color: var(--ifm-color-primary) !important;
+}
 
 h1 {
   font-size: 32px !important;
@@ -85,6 +87,10 @@ p {
 a {
   font-size: 14px;
   font-weight: 500;
+}
+
+table {
+  color: var(--ifm-color-emphasis-800) !important;
 }
 
 .navbar {
