@@ -1,10 +1,10 @@
 .admonition {
   margin-bottom: 1em;
-  background-color: var(--ifm-color-emphasis-900);
+  background-color: var(--ifm-color-emphasis-100);
 }
 
 .admonition a {
-  color: var(--ifm-color-emphasis-300)
+  color: var(--ifm-color-emphasis-700);
 }
 
 .admonitionHeading {
@@ -12,7 +12,7 @@
     var(--ifm-heading-line-height) var(--ifm-heading-font-family);
   text-transform: uppercase;
   margin-bottom: 0.3rem;
-  color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-900);
 }
 
 .admonitionHeading code {
@@ -34,5 +34,5 @@
 
 .admonitionContent > :last-child {
   margin-bottom: 0;
-  color: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-700);
 }
