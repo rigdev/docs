@@ -7,14 +7,115 @@ mkdir database
 cd database
 ```
 
-and follow the instructions in the guide to [setup the Golang SDK](/sdks).
+and follow the instructions in the guide to [setup the Golang SDK](/sdks). You can also clone this example [here](https://github.com/rigdev/database-demo)
+
+## Simple database examples setup
+
+Our project will contain a `main.go`, `mongo.go`, `go.mod` and go.sum`files with`main.go`powering the application. We will also have a`Dockerfile` so we can make a Docker image and deploy it as a Rig capsule. The file structure will be
+
+```
+database-demo
+├── Dockerfile
+├── main.go
+├── mongo.go
+├── go.mod
+├── go.sum
+```
+
+Run
+
+```
+go get go.mongodb.org/mongo-driver
+```
+
+to get the go dependencies. Our Dockerfile will contain
+
+```Dockerfile title="Dockerfile"
+FROM golang:1.20
+
+WORKDIR /usr/src/app
+
+COPY go.mod go.sum ./
+RUN go mod download && go mod verify
+
+COPY . .
+
+CMD ["go", "run", "main.go", "mongo.go"]
+```
+
+`main.go` will for now just contain an almost empty `main` function initializing a `rig.Client` and a test just to see that we can reach the Rig backend
+
+```go title="main.go"
+var client rig.Client
+
+func main() {
+	client = rig.NewClient()
+    if _, err := client.Database().List(context.Background(), connect.NewRequest(&database.ListRequest{})); err != nil {
+		log.Fatal(err)
+	}
+    fmt.Println("Successfully connected to Rig!")
+}
+```
+
+## Deploying as a Rig capsule
+
+We will run the applicaiton by deploying it as a Rig capsule running locally. This also allows us to easier integrate with the Rig authorization workflow. Start by making a new capsule
+
+```bash
+rig capsule create database-demo
+```
+
+Then make a Docker image of the TODO demo
+
+```bash
+docker build -t database-demo .
+```
+
+This we will deploy to our new `database-demo` capsule
+
+```bash
+rig capsule create-build database-demo --image database-demo --deploy
+```
+
+Now we should have `database-demo` running locally which we can verify by running `docker ps`
+
+```bash
+> docker ps
+CONTAINER ID   IMAGE                            COMMAND                  CREATED         STATUS                 PORTS                                            NAMES
+0294f8e4d7bc   database-demo:latest             "go run ./main.go"       2 seconds ago   Up 1 second                                                             database-demo-instance-0
+```
+
+The `rig.Client` expects credentials to be present in the environment variable `RIG_CLIENT_ID` and `RIG_CLIENT_SECRET`. These we can automatically inject in our capsule by running
+
+```bash
+rig capsule config database-demo --auto-add-service-account
+```
+
+If things work you should be able to inspect the logs of the capsule
+
+```bash
+rig capsule logs database-demo
+```
+
+which hopefully shows
+
+```
+Successfully connected to Rig!
+```
+
+Whenever you want to re-deploy the capsule with new code changes, you can update the Docker image and then deploy it
+
+```bash
+docker build -t database-demo .
+rig capsule create-build database-demo --image database-demo --deploy
+```
 
 ## Setting up a new MongoDB managed by Rig
 
 We will use Rig to manage our database and do the work through Rig's CLI. Run
 
 ```bash
-rig database create --name dbname --type mongo
+rig database create --name our_db --type mongo
 ```
 
 This will create a new MongoDB database. Currently, that is the only database we natively support, but Postgres will come soon. Running
@@ -29,7 +130,7 @@ should output
 +---------+--------+------------+
 | DBS (1) | NAME   |       TYPE |
 +---------+--------+------------+
-|       1 | dbname | TYPE_MONGO |
+|       1 | our_db | TYPE_MONGO |
 +---------+--------+------------+
 ```
 
@@ -39,39 +140,15 @@ which confirms we have successfully created one. Although it exists, we don't ha
 rig database create-credentials
 ```
 
-and write `dbname` once it prompts you for a DB Identiifer. This should output a new credential e.g.
+and write `our_db` once it prompts you for a DB Identiifer. This should output a new credential e.g.
 
 ```
 created credential - clientID: rig_a9..., secret: secret_fe...
 ```
 
-Copy the `clientID` and `secret` somewhere you can find them again, as Rig won't have access to the `secret` again. With this setup, we are ready to write some Go!
+Copy the `clientID` and `secret` somewhere you can find them again, as Rig won't have access to the `secret` again.
 
 ## Implementing a backend using the database
-
-Make a `main.go` file in the `database` directory with the basic setup you started with
-
-```go title="main.go"
-package main
-
-import (
-	"context"
-	"fmt"
-	"log"
-
-	rig "github.com/rigdev/rig-go-sdk"
-)
-
-const (
-	_apiKey          = "YOUR_API_KEY"
-)
-
-var client rig.Client
-
-func main() {
-	client = rig.NewClient()
-}
-```
 
 Although Rig currently doesn't support Postgres, support will come soon and this example will be built with that in mind. We need some static configuration for the database we want to connect to, specifically the name and the credentials created previously.
 
@@ -83,13 +160,14 @@ type dbConfig struct {
 }
 
 var mongoConfig = dbConfig{
-    dbname: "dbname",
-    username: "YOUR_CLIENT_ID",
-    password: "YOUR_SECRET",
+	dbname:   os.Getenv("DATABASE_NAME"),
+	username: os.Getenv("DATABASE_CLIENT_ID"),
+	password: os.Getenv("DATABASE_CLIENT_SECRET"),
 }
 ```
 
-and with that let's try to connect to our DB
+The database name and credentials we will read from environment variables. We can configure these environment variables within the Rig capsule that deploys our application. We will get back to that a bit later.
+With that let's try to connect to our DB
 
 ```go title="main.go"
 func main() {
@@ -125,12 +203,15 @@ func main() {
 	}
     // Although we now have a connection to the database, we need an explicit handle to it
     // This requires us to pass in the name which Rig gave to MongoDB when creating it.
-    // This name differs from the `dbname` we called it when constructing it through the Rig CLI
+    // This name differs from the `our_db` we called it when constructing it through the Rig CLI
     db := mongoClient.Database(endpointResponse.Msg.DatabaseName)
 }
 ```
 
-This should give us a valid handle to a `*mongo.Database` object interfacing with our database. It's time to use it! The cake-rating app we will build a backend to consists of the following
+This should give us a valid handle to a `*mongo.Database` object interfacing with our database. If you re-deploy the capsule with just these changes, the environment variables we read into the `dbConfig` will not be set. To set them in the capsule, go to you local Rig dashboard (`localhost:4747`) and under the `Settings` tab of your database-demo capsule. Here you can set environment variables as shown below
+![image](https://i.imgur.com/niczrR3.png)
+
+It's time to use our database connection! Our cake-rating app will have a backend with the following:
 
 - A collection of `Images` each having an ELO rating and a URL to an image of the cake. These will be stored in our database.
 - An endpoint `addImage` which adds a new image to the collection with a URL an image.
@@ -157,19 +238,19 @@ type image struct {
 }
 ```
 
-Make a new file `mongo.go` where we'll implement the interface and move the connection logic. For now, we'll just have empty implementations of the interface functions.
+Make the file `mongo.go` where we'll implement the interface and move the connection logic. For now, we'll just have empty implementations of the interface functions.
 
 ```go title="mongo.go"
 package main
 
-func newMongoRepository(ctx context.Context, uri string, dbname string) (Repository, error) {
+func newMongoRepository(ctx context.Context, uri string, our_db string) (Repository, error) {
 	mongoClient, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to mongo: %q", err)
 	}
 
 	return &mongoRepository{
-		db: mongoClient.Database(dbname),
+		db: mongoClient.Database(our_db),
 	}, nil
 }
 
@@ -211,7 +292,7 @@ func main() {
 
     // When Rig creates a new database it associates to it a UUID. We need this UUID
 	dbResponse, err := client.Database().GetByName(ctx, connect.NewRequest(&database.GetByNameRequest{
-		Name: mongoConfig.dbname,
+		Name: mongoConfig.our_db,
 	}))
 	if err != nil {
 		return fmt.Errorf("no database found: %q", err)

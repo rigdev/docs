@@ -7,76 +7,11 @@ mkdir todo
 cd todo
 ```
 
-and follow the instructions in the guide to [setup the Golang SDK](/sdks).
+and follow the instructions in the guide to [setup the Golang SDK](/sdks). You can also clone this example [here](https://github.com/rigdev/todo-demo)
 
 ## Simple TODO-list setup
 
-Users can be created with three different types of identifiers: username, email, or phone number. We will use usernames for the remainder of this example. We create a new user as such
-
-```go
-client.Authentication().Register(ctx, connect.NewRequest(&authentication.RegisterRequest{
-    Method: &authentication.RegisterRequest_UserPassword{
-        UserPassword: &authentication.UserPassword{
-            Password: password,
-            Identifier: &model.UserIdentifier{Identifier: &model.UserIdentifier_Username{
-                Username: username,
-            }},
-        },
-    },
-}))
-```
-
-Say we have created a new user with `username=user1` and `password=password1!`, then we can login with that user which creates an `accessToken, refreshToken` pair. The `accessToken` has a Time To Live of 60 minutes and will be used in subsequent authentication of that specific user `user1`. We login with
-
-```go
-response, err := client.Authentication().Login(ctx, connect.NewRequest(&authentication.LoginRequest{
-    Method: &authentication.LoginRequest_UserPassword{
-        UserPassword: &authentication.UserPassword{
-            Identifier: &model.UserIdentifier{
-                Identifier: &model.UserIdentifier_Username{
-                    Username: "user1",
-                },
-            },
-            Password: "password1!",
-        },
-    },
-}))
-if err != nil {
-    log.Fatal("failed to login: %q", err)
-}
-accessToken := response.Msg.Token.AccessToken
-refreshToken := response.Msg.Token.RefreshToken
-```
-
-If a user after logging in provides access- and refresh tokens (say through a web request), we can validate the tokens (if they are indeed valid) and extract which user (specifically the user UUID) the tokens represent
-
-```go
-authClient := rig.NewClient()
-authClient.SetAccessToken(accessToken, refreshToken)
-response, err := authClient.Authentication().Get(ctx, connect.NewRequest(&authentication.GetRequest{}))
-if err != nil {
-    log.Fatal("failed to authenticate: %q", err)
-}
-userID := response.Msg.UserId
-```
-
-After a successful authentication, it is safe to access/update the user
-
-```go
-response, err := client.User().Get(ctx, connect.NewRequest(&user.GetRequest{
-    UserId: userID,
-}))
-if err != nil {
-    log.Fatal("failed to get user info: %q", err)
-}
-user := response.Msg.User
-```
-
-The `User` field contains various information stored with the user, among other things a generic `map[string][]byte` field `Metadata` which we can use to associate simple data with the user. With all these concepts we will now piece together to construct a simple TODO web app with a simple web frontend all running locally for local development. Later we'll see how we can deploy this simple app using Rig's deployment system.
-
-## Simple TODO-list setup
-
-Our project will contain a `main.go`, `go.mod` and go.sum`files with`main.go`powering the webserver. We will also have a`Dockerfile` so we can make a Docker image and deploy it as a Rig capsule and a frontend implemented in an`index.html`and`index.js`. The file structure will be
+Our project will contain a `main.go`, `go.mod` and `go.sum` files with `main.go` powering the webserver. We will also have a `Dockerfile` so we can make a Docker image and deploy it as a Rig capsule and a frontend implemented in an `index.html` and `index.js`. The file structure will be
 
 ```
 todo
@@ -92,9 +27,6 @@ todo
 Run
 
 ```
-go get github.com/bufbuild/connect-go
-go get github.com/google/uuid
-go get github.com/rigdev/rig-go-api
 go get github.com/rigdev/rig-go-sdk
 ```
 
@@ -200,19 +132,19 @@ We will need the `client` object for most of the requests to the backend, thus w
 We will run the web app by deploying it as a Rig capsule running locally. This also allows us to easier integrate with the Rig authorization workflow. Start by making a new capsule
 
 ```bash
-rig capsule create todo-server
+rig capsule create todo-demo
 ```
 
 Then make a Docker image of the TODO demo
 
 ```bash
-docker build -t todo
+docker build -t todo-demo
 ```
 
 This we will deploy to our new `todo-demo` capsule
 
 ```bash
-rig capsule create-build todo-server --image todo --deploy
+rig capsule create-build todo-demo --image todo-demo --deploy
 ```
 
 Now we should have `todo-demo` running locally which we can verify by running `docker ps`
@@ -220,13 +152,13 @@ Now we should have `todo-demo` running locally which we can verify by running `d
 ```bash
 > docker ps
 CONTAINER ID   IMAGE                            COMMAND                  CREATED         STATUS                 PORTS                                            NAMES
-0294f8e4d7bc   todo:latest                 "go run ./main.go"       2 seconds ago   Up 1 second                                                             todo-server-instance-0
+0294f8e4d7bc   todo-demo:latest                 "go run ./main.go"       2 seconds ago   Up 1 second                                                             todo-demo-instance-0
 ```
 
 The `rig.Client` expects credentials to be present in the environment variable `RIG_CLIENT_ID` and `RIG_CLIENT_SECRET`. These we can automatically inject in our capsule by running
 
 ```bash
-rig capsule config todo-server --auto-add-service-account
+rig capsule config todo-demo --auto-add-service-account
 ```
 
 Although our webserver is listening on port 3333, this port is not exposed to the public. We can expose it as a public port through the Rig dashboard under your capsule's Networks tab.
@@ -341,8 +273,8 @@ window.addEventListener("load", () => {
 Redeploy the server
 
 ```bash
-docker build -t todo .
-rig capsule create-build todo-server --image todo --deploy
+docker build -t todo-demo .
+rig capsule create-build todo-demo --image todo-demo --deploy
 ```
 
 Fill out the login form, click `Create User` and the web console should print the tokens e.g.
