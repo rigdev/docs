@@ -100,6 +100,12 @@ const sidebars = {
           label: "Manage Capsules",
           className: "docpage-sidebar-item",
         },
+        {
+          type: "doc",
+          id: "capsules/github-actions",
+          label: "Github Actions",
+          className: "docpage-sidebar-item",
+        },
       ],
     },
     {
@@ -364,15 +370,15 @@ const sidebars = {
       },
     },
     {
-    type: "category",
-    label: "Cluster Management",
-    link: {type: "doc", id: "cluster"},
-    className: "homepage-sidebar-item",
-    customProps: {
-      sidebar_icon: "BiBuilding",
-    },
-    collapsed: true,
-    items: [
+      type: "category",
+      label: "Cluster Management",
+      link: { type: "doc", id: "cluster" },
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiBuilding",
+      },
+      collapsed: true,
+      items: [
         {
           type: "doc",
           id: "cluster/access-admin-cli",
@@ -474,7 +480,7 @@ const sidebars = {
           label: "Firebase",
           className: "docpage-sidebar-item",
         },
-      ]
+      ],
     },
   ],
 };

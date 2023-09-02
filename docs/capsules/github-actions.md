@@ -16,9 +16,9 @@ In this document you'll learn how to build and deploy your application automatic
 
 It is assumed that you have a Rig Capsule up and running, see [Deploy Your Application](/capsules/create-deploy) if not. You should also have a Github repository which you would like to build and deploy to your capsule.
 
-## Stuff
+## Example workflow using the actions
 
-Rig exposes two different actions, `build` and `deploy`. The `build` action assumes you have a Docker image you want to deploy and makes a Rig build off of it. The `deploy` action can then deploy the previously (or any other) generated build to a capsule.
+Rig exposes [two different actions](https://github.com/rigdev/actions), `build` and `deploy`. The `build` action assumes you have a Docker image you want to deploy and makes a Rig build off of it. The `deploy` action can then deploy the previously (or any other) generated build to a capsule.
 As you need a Docker image to build and deploy, it is common to prefix these two actions with [Docker Github actions](https://docs.docker.com/build/ci/github-actions/) to build and publish an image.
 
 The following Github workflow example showcases how you can
