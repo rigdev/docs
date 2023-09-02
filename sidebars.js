@@ -394,6 +394,15 @@ const sidebars = {
       ],
     },
     {
+      type: "doc",
+      id: "usage",
+      label: "Usage",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiKey",
+      },
+    },
+    {
       type: "html",
       value: "Dev Tools",
       className: "homepage-sidebar-divider",

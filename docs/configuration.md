@@ -33,8 +33,8 @@ The following table shows available configuration options.
 | `client.smtp.user` | SMTP server user | - |
 | `cluster.type` | Cluster type. Can be either `docker` or `k8s` | docker |
 | `email.type` | Email type specifies how to send email. Can be left empty for no email or set to one of `mailjet`, `smtp`. Requires the corresponding `client.<email.type>` to be configured | - |
-| `management.port` | Port which the Rig server will listen on | 4747 |
-| `management.telemetry.disabled` | Wether to disable telemetry | false |
+| `port` | Port which the Rig server will listen on | 4747 |
+| `telemetry.disabled` | Wether to disable telemetry | false |
 
 <!---
 Technically settable, but no users will do this
@@ -56,7 +56,7 @@ Maybe remove
 | `init.root.password` | Password of the user specified in `init.root.email` | - |
 
 These settings are for unfinished features, so we keep them commented for now.
-| `management.public_url` | Public URL where rig is accessible | - |
+| `public_url` | Public URL where rig is accessible | - |
 | `oauth.facebook.client_id` | OAuth client ID | - |
 | `oauth.facebook.client_secret` | OAuth client secret | - |
 | `oauth.github.client_id` | OAuth client ID | - |
