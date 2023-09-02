@@ -16,7 +16,7 @@ Add the rig homebrew tap and install the CLI.
 
 ```bash
 brew tap rigdev/tap
-brew install rig
+brew install rigdev/tap/rig
 ```
 
 ### Binaries
@@ -32,9 +32,7 @@ page](https://github.com/rigdev/rig/releases) to find yours.
 
 Installation from source requires the go toolchain to be installed.
 
-```bash
-go install github.com/rigdev/rig/cmd/rig@{RIG_VERSION}
-```
+<pre><code className="language-bash">go install github.com/rigdev/rig/cmd/rig@{RIG_VERSION}</code></pre>
 
 ## Authenticate
 After installing Rig, you can login to the CLI by running:
