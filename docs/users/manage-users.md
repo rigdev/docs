@@ -27,7 +27,7 @@ resp, err := client.User().Get(ctx, connect.NewRequest(&user.GetRequest{
 if err != nil {
     log.Fatal(err)
 }
-log.Println("successfully fetched user: " + resp.Msg.GetUser().String())
+log.Printf("successfully fetched user: %s \n", resp.Msg.GetUser().GetUserId())
 
 // OR
 
@@ -35,7 +35,7 @@ identifier := &model.UserIdentifier{} // NOTE: insert a specifc identifier here
 resp, _ := client.User().Lookup(ctx, connect.NewRequest(&user.LookupRequest{
     Identifier: identifier,
 }))
-log.Println("successfully fetched user: " + resp.Msg.GetUser().String())
+log.Printf("successfully fetched user: %s \n", resp.Msg.GetUser().GetUserId())
 ```
 
 </TabItem>
@@ -90,7 +90,7 @@ resp, err := client.User().List(ctx, connect.NewRequest(&user.ListRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched %d client.User(). Total amount is: %d", len(resp.Msg.GetUsers()), resp.Msg.GetTotal())
+fmt.Printf("successfully fetched %d users. Total amount is: %d \n", len(resp.Msg.GetUsers()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -153,7 +153,7 @@ resp, err := client.User().List(ctx, connect.NewRequest(&user.ListRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched %d client.User() matching your query. Total amount is: %d", len(resp.Msg.GetUsers()), resp.Msg.GetTotal())
+fmt.Printf("successfully fetched %d client.User() matching your query. Total amount is: %d \n", len(resp.Msg.GetUsers()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -383,7 +383,7 @@ resp, err := client.User().ListSessions(ctx, connect.NewRequest(&user.ListSessio
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched %d user sessions", resp.Msg.GetTotal())
+fmt.Printf("successfully fetched %d user sessions \n", resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -393,7 +393,7 @@ fmt.Printf("successfully fetched %d user sessions", resp.Msg.GetTotal())
 const userID = "" // NOTE: insert a specifc userID here
 const resp = await client.user.listSessions({
     userId: userID,
-}))
+})
 console.log(`successfully fetched ${resp.total} user sessions`)
 ```
 

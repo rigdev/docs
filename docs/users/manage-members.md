@@ -6,15 +6,13 @@ import TabItem from '@theme/TabItem';
 
 # Managing Members using the SDK or CLI
 
-## Overview
-
 This document provides instructions on managing members in groups using the SDK or CLI. It covers various operations such as adding and removing members, as well as fetching members from specific groups. By following the guidelines provided, you will learn how to effectively manage group members using the SDK functionalities.
 
 <hr class="solid" />
 
 ## Adding a Member
 
-To add members to groups in your backend, you can utilize the `AddMember` endpoint. When making a request to add a member, include the `UUID` of the user and the group in your request. By sending this information along with the request, you can successfully add a user as a member of a specific group in your backend:
+To add members to groups in your backend, you can utilize the `AddMember` endpoint. When making a request to add one or more members, include the `UUIDs` of the users and the group in your request. By sending this information along with the request, you can successfully add users as members of a specific group in your backend:
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -25,7 +23,7 @@ userIDOne := "" // NOTE: insert a specifc userID here
 userIDTwo := "" // NOTE: insert a specifc userID here
 if _, err := client.Group().AddMember(ctx, connect.NewRequest(&group.AddMemberRequest{
     GroupId: groupID,
-    UserIds:  []*model.UUID{userIDOne, userIDTwo},
+    UserIds:  []string{userIDOne, userIDTwo},
 })); err != nil {
     log.Fatal(err)
 }

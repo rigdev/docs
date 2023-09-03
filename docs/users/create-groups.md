@@ -1,9 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating Groups using the SDK or CLI
-
-## Overview
+# Creating Groups
 
 This document provides instructions on how to create groups using the SDK or CLI in Rig.
 
@@ -25,7 +23,7 @@ resp, err := client.Group().Create(ctx, connect.NewRequest(&group.CreateRequest{
 if err != nil {
   log.Fatal(err)
 }
-fmt.Printf("successfully created group:\n%s\nWith ID: %s", resp.Msg.GetGroup().String(), resp.Msg.GetGroupId().String())
+fmt.Printf("successfully created group:\n%s\nWith ID: %s \n", resp.Msg.GetGroup().String(), resp.Msg.GetGroup().GetGroupId())
 ```
 
 </TabItem>
@@ -79,7 +77,7 @@ resp, err := client.Group().Create(ctx, connect.NewRequest(&group.CreateRequest{
 if err != nil {
   log.Fatal(err)
 }
-fmt.Printf("successfully created group:\n%s\nWith ID: %s", resp.Msg.GetGroup().String(), resp.Msg.GetGroupId().String())
+fmt.Printf("successfully created group:\n%s\nWith ID: %s \n", resp.Msg.GetGroup().GetName(), resp.Msg.GetGroup().GetGroupId())
 ```
 
 </TabItem>

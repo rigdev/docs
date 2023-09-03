@@ -17,26 +17,23 @@ Service Accounts are be used to authenticate and identify your application and R
 Service Accounts for external use are created through the dashboard and can be found under your project settings as seen below:
 
 <ThemedImage
-alt="Dashboard Credential Image"
-customProps={{
-    zoom: true
-  }}
-sources={{
-    light: '/img/service-account/no-credentials.png',
-    dark: '/img/service-account/no-credentials.png',
+  alt="Dashboard Service Account Image"
+  sources={{
+    light: '/img/service-account/no-service-account.png',
+    dark: '/img/service-account/no-service-account.png',
   }}
 />
 
-Click on the **Add Service Account** and provide a name. Afterwards you will see the success screen with your new service account:
+Click on the **Add Service Account** and provide a name. Afterward, you will see the success screen with your new service account:
 
 <ThemedImage
-alt="Dashboard Credential Image"
-customProps={{
+  alt="Dashboard Service Account Image"
+  customProps={{
     zoom: true
   }}
-sources={{
-    light: '/img/service-account/credentials-created.png',
-    dark: '/img/service-account/credentials-created.png',
+  sources={{
+    light: '/img/service-account/service-account-created.png',
+    dark: '/img/service-account/service-account-created.png',
   }}
 />
 

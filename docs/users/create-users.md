@@ -5,7 +5,7 @@ pagination_prev: null
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating Users using the SDK or CLI
+# Creating Users
 
 This document provides instructions on how to create users using the SDK or the CLI in Rig. Users in Rig can be created with one or more of three types of unique identifiers:
 
