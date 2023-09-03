@@ -1,6 +1,6 @@
 # TODO-list example
 
-We will create a simple TODO list web app with user authentication showcasing how Rig operates with users. The app will be written in Go using the Rig Golang SDK. As a first step, create a new empty directory containing our app
+We will create a simple TODO list web app with user authentication showcasing how Rig operates with users. The app will be written in Go using the Rig Golang SDK. This guide assumes you've gone through our [getting started](/getting-started) and set up Rig on Docker locally. After that, create a new empty directory containing our app
 
 ```bash
 mkdir todo

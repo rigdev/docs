@@ -1,6 +1,6 @@
 # User Management with OAuth
 
-We will create a very simple web app showcasing how Rig uses OAuth for user management. For a more complex web app that also revolves around user management but with more complex state handling, see the [TODO-list example](/examples/todo). The example will be written in Go using the Rig Golang SDK. As a first step, create a new empty directory containing our app
+We will create a very simple web app showcasing how Rig uses OAuth for user management. For a more complex web app that also revolves around user management but with more complex state handling, see the [TODO-list example](/examples/todo). The example will be written in Go using the Rig Golang SDK. This guide assumes you've gone through our [getting started](/getting-started) and set up Rig on Docker locally. As a first step, create a new empty directory containing our app
 
 ```bash
 mkdir oauth

@@ -1,6 +1,6 @@
 # Simple Web App backed by a database
 
-We will create a simple webserver backed by a MongoDB database which implements the backend to a cake-rating app.
+This guide assumes you've gone through our [getting started](/getting-started) and set up Rig on Docker locally. We will create a simple webserver backed by a MongoDB database which implements the backend to a cake-rating app.
 
 ```bash
 mkdir database
@@ -118,7 +118,7 @@ We will use Rig to manage our database and do the work through Rig's CLI. Run
 rig database create --name our_db --type mongo
 ```
 
-This will create a new MongoDB database. Currently, that is the only database we natively support, but Postgres will come soon. Running
+This will create a new MongoDB database. Currently, that is the only database we natively support, but more will come. Running
 
 ```bash
 rig database list
@@ -150,7 +150,7 @@ Copy the `clientID` and `secret` somewhere you can find them again, as Rig won't
 
 ## Implementing a backend using the database
 
-Although Rig currently doesn't support Postgres, support will come soon and this example will be built with that in mind. We need some static configuration for the database we want to connect to, specifically the name and the credentials created previously.
+We need some static configuration for the database we want to connect to, specifically the name and the credentials created previously.
 
 ```go title="main.go"
 type dbConfig struct {
@@ -219,7 +219,7 @@ It's time to use our database connection! Our cake-rating app will have a backen
 - An endpoint `vote` which votes on which of the two cakes (`Images`) is best. This will update the ELO rating of those two `Images`.
 - An endpoint `listImages` which dumps the collection of all images
 
-Each of these endpoints is served by a unique database query. We'll encapsulate these queries in a `Repository` interface so we can easily add support for a Postgres backing instead of MongoDB
+Each of these endpoints is served by a unique database query. We'll encapsulate these queries in a `Repository` interface so we can easily add support for other databases once we support it
 
 ```go title="main.go"
 type Repository interface {
