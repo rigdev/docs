@@ -11,7 +11,7 @@ Configuration can be overridden using environment variables on the form
 `RIG_<CONFIG>` where `<CONFIG>` is the configuration path in uppercase with
 dots replaced by underscores. Eg. in order to set `client.mailjet.api_key`
 through an environment variable one would set the environment variable
-`RIG_CLIENT_MAILJET_API_KEY`.
+`RIG_CLIENT_MAILJET_PROJECT_ID`.
 
 The following table shows available configuration options.
 

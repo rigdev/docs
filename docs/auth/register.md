@@ -15,7 +15,7 @@ To register users in your backend, you can utilize the Register endpoint. When r
 
 To control the enabled identifiers in your system, please refer to the [login methods section](/auth/auth-settings).
 
-Make sure to set the `ApiKey` field to match your project ID. Register a user with an email and password, by executing the following command:
+Make sure to set the `ProjectId` field to match your project ID. Register a user with an email and password, by executing the following command:
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -26,7 +26,7 @@ resp, err := client.Authentication().Register(ctx, connect.NewRequest(&authentic
         UserPassword: &authentication.UserPassword{
             Password:   "YourPassword1234!",
             Identifier: &model.UserIdentifier{Identifier: &model.UserIdentifier_Email{Email: "johndoe@acme.com"}},
-            ApiKey:     "YOU-API-KEY",
+            ProjectId:     "YOU-PROJECT-ID",
         },
     },
 }))

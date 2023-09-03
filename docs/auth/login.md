@@ -107,7 +107,7 @@ log.Printf("successfully verified email")
 if _, err := client.Authentication().VerifyEmail(ctx, connect.NewRequest(&authentication.VerifyEmailRequest{
     Code:   "CODE-FROM-EMAIL",
     Email:  "johndoe@acme.com",
-    ApiKey: "MyProjectId1234",
+    ProjectId: "MyProjectId1234",
 })
 console.log("successfully verified email")
 ```

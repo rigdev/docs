@@ -28,7 +28,7 @@ Use the `AuthConfig` endpoint to fetch your projects public auth configuration. 
 ```go
 authConfigResp, err := client.Authentication().GetAuthConfig(ctx, connect.NewRequest(&authentication.GetAuthConfigRequest{
   RedirectAddr: "YOUR-REDIRECT-ADDR",
-  ApiKey:       "YOUR-API-KEY",
+  ProjectId:       "YOUR-PROJECT-ID",
 }))
 if err != nil {
   log.Fatal(err)
@@ -60,7 +60,7 @@ Redirect your user to the intended `ProviderUrl`. You can do this from either yo
 ```go
 authConfigResp, err := client.Authentication().GetAuthConfig(ctx, connect.NewRequest(&authentication.GetAuthConfigRequest{
   RedirectAddr: "YOUR-REDIRECT-ADDR",
-  ApiKey:       "YOUR-API-KEY",
+  ProjectId:       "YOUR-PROJECT-ID",
 }))
 if err != nil {
   log.Fatal(err)

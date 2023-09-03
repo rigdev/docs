@@ -16,7 +16,7 @@ If a user has not yet verified their account and is unable to remember their pas
 
 ## Implementation
 ### 1. Send Reset Password Link
-To send a reset password template, you can utilize the `SendPasswordReset` endpoint. Make the API call with your `ApiKey` and the user's `Identifier`. The available identifiers include usernames, emails, and phone numbers. Make sure to include one of these fields when calling the client:
+To send a reset password template, you can utilize the `SendPasswordReset` endpoint. Make the API call with your `ProjectId` and the user's `Identifier`. The available identifiers include usernames, emails, and phone numbers. Make sure to include one of these fields when calling the client:
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -26,7 +26,7 @@ if _, err := client.Authentication().SendPasswordReset(ctx, connect.NewRequest(&
     Identifier: &model.UserIdentifier{
         Identifier: &model.UserIdentifier_Email{Email: "johndoe@acme.com"},
     },
-    ApiKey: "YOUR-API-KEY",
+    ProjectId: "YOUR-PROJECT-ID",
 })); err != nil {
     log.Fatal(err)
 }
@@ -37,7 +37,7 @@ if _, err := client.Authentication().SendPasswordReset(ctx, connect.NewRequest(&
 By performing this action, the reset-password flow will be triggered in the backend, and the user will receive instructions via email or text message. You can customize the reset password templates by accessing the [auth templates section](/auth/auth-templates).
 
 ### 2. Reset Password
-To reset the password, you can utilize the `ResetPassword` endpoint. Make the API call with your `ApiKey`, the user's `Identifier`, the `NewPassword`, and the `Code` that was sent to the user in the previous step. The available identifiers include usernames, emails, and phone numbers. Make sure to include these fields when making the call to the client:
+To reset the password, you can utilize the `ResetPassword` endpoint. Make the API call with your `ProjectId`, the user's `Identifier`, the `NewPassword`, and the `Code` that was sent to the user in the previous step. The available identifiers include usernames, emails, and phone numbers. Make sure to include these fields when making the call to the client:
 <Tabs>
 <TabItem value="go" label="Golang SDK">
 
@@ -48,7 +48,7 @@ if _, err := client.Authentication().ResetPassword(ctx, connect.NewRequest(&auth
     Identifier: &model.UserIdentifier{
         Identifier: &model.UserIdentifier_Email{Email: "johndoe@acme.com"},
     },
-    ApiKey: "YOUR-API-KEY",
+    ProjectId: "YOUR-PROJECT-ID",
 })); err != nil {
     log.Fatal(err)
 }
