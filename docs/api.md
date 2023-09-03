@@ -8,6 +8,6 @@ hide_footer: true
 ---
 
 <div style={{height: "110vh", width: "100vw", position: "absolute", left: 0}}>
-    <iframe style={{height: "100%", width: "100%", transform: "translateY(-115px)"}} src="https://doc.gendocu.com/Rig/api/api">
+    <iframe style={{height: "100%", width: "100%", transform: "translateY(-115px)"}} src="https://buf.build/rigdev/rig">
     </iframe>
 </div>

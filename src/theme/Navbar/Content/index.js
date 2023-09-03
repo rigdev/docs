@@ -83,7 +83,7 @@ export default function NavbarContent() {
             </Button>
           </div>
           <div style={{marginRight: "5px"}}>
-            <Button width='35px' height='35px' textAlign='center' onClick={() => window.open("https://discord.gg/9KYQqpRpBN")}> 
+            <Button width='35px' height='35px' textAlign='center' onClick={() => window.open("https://discord.gg/Tn5wmXMM2U")}> 
               <div style={{color: "var(--ifm-color-emphasis-700)", display: "block", justifyContent: "center", alignItems: "center"}}>
                   <DynamicBiIcon size={15} name={"discord"}/>
               </div>
