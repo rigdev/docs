@@ -19,7 +19,7 @@ Currently, we support OAuth login using Google, Facebook, and Github. To use any
 
 ## OAuth-demo setup
 
-Our project will contain a `main.go`, `go.mod` and `go.sum` files with `main.go` powering the webserver. We will also have a `Dockerfile` so we can make a Docker image and deploy it as a Rig capsule and a frontend implemented in an `index.html` and `index.js`. The file structure will be
+Our project will contain a `main.go`, `go.mod`, and `go.sum` files with `main.go` powering the webserver. We will also have a `Dockerfile` so we can make a Docker image and deploy it as a Rig capsule and a frontend implemented in an `index.html` and `index.js`. The file structure will be
 
 ```
 oauth
@@ -68,7 +68,7 @@ const (
 )
 ```
 
-These environment variables we can configure in our capsule to be automatically setup. To test it we'll for now have a simple `main` function which just prints out the keys.
+These environment variables we can configure in our capsule to be automatically setup. To test it we'll for now have a simple `main` function that just prints out the keys.
 
 ```go title="main.go"
 func main() {
@@ -77,7 +77,7 @@ func main() {
     fmt.Println("Github", GITHUB_OAUTH_PUBLIC_KEY, GITHUB_OAUTH_PRIVATE_KEY)
 ```
 
-Let's setup a capsule, deploy it and see that we can read in these variables. Run
+Let's set up a capsule, deploy it, and see that we can read in these variables. Run
 
 ```bash
 rig capsule create --name oauth-demo
@@ -85,14 +85,14 @@ rig capsule create --name oauth-demo
 
 Now that we have a capsule we can set environment variables for it in the Rig dashboard accessible on `localhost:4747`. Navigate to the `Settings` tab the `oauth-demo` capsule and set environment variables like this
 ![image](https://i.imgur.com/Uf6f2bV.png)
-After these changed are saved we'll make a Docker image with our application and deploy it to the capsule
+After these changes are saved we'll make a Docker image with our application and deploy it to the capsule
 
 ```bash
 docker build -t oauth-demo .
 rig capsule create-build oauth-demo --image oauth-demo --deploy
 ```
 
-If all this worked, the capsule should print out the API credentials. Inspect the logs with
+If all this works, the capsule should print out the API credentials. Inspect the logs with
 
 ```
 rig capsule logs oauth-demo
@@ -100,7 +100,7 @@ rig capsule logs oauth-demo
 
 ## Using the Rig client
 
-Using the `rig.Client` we can access all the modules of Rig, including the User module which we'll use for OAuth authentication. The client requires some credentials to be able to communicate with the Rig backend. These can be automatically inejected into the capsule as environment varibles by running the following command
+Using the `rig.Client` we can access all the modules of Rig, including the User module which we'll use for OAuth authentication. The client requires some credentials to be able to communicate with the Rig backend. These can be automatically injected into the capsule as environment variables by running the following command
 
 ```bash
 rig capsule config oauth-demo --auto-add-service-account
@@ -169,11 +169,11 @@ func main() {
 	}
 ```
 
-This enables Google, Facebook, and Github OAuth authentication with all three being allowed to create new users and log in existing ones. The last update element sets the list of callback URLs which we allow the OAuth providers to redirect the users to after logging in. Our oauth demo application will expose a `userPage` endpoint on port `3333` which we'll redirect users to after logging in.
+This enables Google, Facebook, and Github OAuth authentication with all three being allowed to create new users and log in existing ones. The last update element sets the list of callback URLs which we allow the OAuth providers to redirect the users to after logging in. Our Oauth demo application will expose a `userPage` endpoint on port `3333` which we'll redirect users to after logging in.
 
 You can redeploy the capsule and inspect the logs in the same way we did previously.
 
-After updating the settings for the OAuth providers we can list them and get a login link for each of them with a callback URL. The `GetAuthConfig` function on the `rig.Client` requires the ID of the project the capsule runs in. Within a capsule this ID is automatically stored in the `RIG_PROJECT_ID` environment variable for us to read.
+After updating the settings for the OAuth providers we can list them and get a login link for each of them with a callback URL. The `GetAuthConfig` function on the `rig.Client` requires the ID of the project the capsule runs in. Within a capsule, this ID is automatically stored in the `RIG_PROJECT_ID` environment variable for us to read.
 
 ```go title="main.go"
 var _projectID = os.Getenv("RIG_PROJECT_ID")
@@ -205,7 +205,7 @@ name:"Google" provider_url:"https://accounts.google.com/o/oauth2/auth?client_id=
 name:"Facebook" provider_url:"https://www.facebook.com/v3.2/dialog/oauth?client_id=..."
 ```
 
-Clicking on any of the links takes you to the corresponding provider's login page. After a successful login you should be redirected to the URL specified in the `RedirectAddr` we passed when accessing the `AuthConfig``. The redirect URL will have two query parameters, `access_token=...`and`refresh_token=...`. The `access_token` has a Time-To-Live of 60 minutes. These tokens we will use when authenticating the user up against Rig.
+Clicking on any of the links takes you to the corresponding provider's login page. After a successful login you should be redirected to the URL specified in the `RedirectAddr` we passed when accessing the `AuthConfig`. The redirect URL will have two query parameters, `access_token=...` and `refresh_token=...`. The `access_token` has a Time-To-Live of 60 minutes. These tokens we will use when authenticating the user up against Rig.
 
 We will make a small website example where we start with a login screen and then redirect the user to a page with a little bit of data localized to each specific user and accessed through the tokens.
 For convenience's sake, I also use a helper function for handling HTTP requests. It is purely for ergonomic reasons and is not related to Rig in any way.
@@ -323,15 +323,15 @@ console.log(params);
 We add an `onclick` listener to each of the three buttons, calling the `login` endpoint with the `provider` query parameter set according to the button being pressed.
 Then if the `login` request succeeded, we redirect the user to the returned URL.
 
-Besides redeploying the capsule with the code changes, we need to expose the `3333` port to the public as by default ports which a capsule listens on are not publicly available. You an do this under the `Network` tab in the capsules page in the dashboard and should have the following settings
+Besides redeploying the capsule with the code changes, we need to expose the `3333` port to the public as by default ports on which a capsule listens are not publicly available. You can do this under the `Network` tab on the capsules page in the dashboard and should have the following settings
 ![image](https://github.com/rigdev/oauth-demo/assets/24476600/d025a238-5269-435e-a8f3-38e1dca23e90)
-We expose port 3333 and add an authorization middleware to two new endpoints which we'll add later (`/updateData` and `/getData`). These two endpoints require a user-login to access.
+We expose port 3333 and add an authorization middleware to two new endpoints which we'll add later (`/updateData` and `/getData`). These two endpoints require a user login to access.
 
-If you have redeployed and updated the networking settings you should be able to view the landing page with the three login buttons on `localhost:3333/`. The login-buttons should work and after a successful login, redirect you to `localhost:3333/userPage`. The `userPage` is not implemented yet, so loading it is expected to fail.
+If you have redeployed and updated the networking settings you should be able to view the landing page with the three login buttons on `localhost:3333/`. The login buttons should work and after a successful login, redirect you to `localhost:3333/userPage`. The `userPage` is not implemented yet, so loading it is expected to fail.
 
-## Userpage with user specific data
+## Userpage with user-specific data
 
-Our `userPage` will be a simple page displaying a little bit of data unique to the user and we'll add the ability to update this data. Make two new files `oauth/userpage.html` and `oauth/userpage.js`, resulting in the filestructure
+Our `userPage` will be a simple page displaying a little bit of data unique to the user and we'll add the ability to update this data. Make two new files `oauth/userpage.html` and `oauth/userpage.js`, resulting in the file structure
 
 ```
 oauth
@@ -393,7 +393,7 @@ For now, we simply retrieve the access and refresh tokens from the URL parameter
 
 as well.
 
-The text field and submit button are functionless at the moment. The last thing will be to complete their functionality. We will add two new endpoints in the backend `updateData` and `getData`. `updateData` stores user-specific data (just plain text here) and `getData` fetches it. User authorization will be handled by the authorization middleware we added earlier when we updated the Network settings. The middleware adds a `X-Rig-User-ID` header with a user ID of the user associated to the previous access token
+The text field and submit button are functionless at the moment. The last thing will be to complete their functionality. We will add two new endpoints in the backend `updateData` and `getData`. `updateData` stores user-specific data (just plain text here) and `getData` fetches it. User authorization will be handled by the authorization middleware we added earlier when we updated the Network settings. The middleware adds a `X-Rig-User-ID` header with a user ID of the user associated with the previous access token
 
 ```go title="main.go"
 func runServer() {
@@ -487,6 +487,6 @@ async function updateUserData() {
 }
 ```
 
-With these additions, redeploy the capsule and try and login with different users and add some data. You should see that the data on the page is user-specific and persists over time.
+With these additions, redeploy the capsule, try and login with different users, and add some data. You should see that the data on the page is user-specific and persists over time.
 
 This concludes this basic example of how to set up OAuth for user creation/login, using it in a simple web app, and persisting user-specific data.

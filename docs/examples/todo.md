@@ -125,7 +125,7 @@ func runServer() error {
 }
 ```
 
-We will need the `client` object for most of the requests to the backend, thus we'll define a global `client` object which will be re-used across requests. The `client` is thread safe.
+We will need the `client` object for most of the requests to the backend, thus we'll define a global `client` object that will be re-used across requests. The `client` is thread-safe.
 
 ## Deploying as a Rig capsule
 
@@ -155,24 +155,24 @@ CONTAINER ID   IMAGE                            COMMAND                  CREATED
 0294f8e4d7bc   todo-demo:latest                 "go run ./main.go"       2 seconds ago   Up 1 second                                                             todo-demo-instance-0
 ```
 
-The `rig.Client` expects credentials to be present in the environment variable `RIG_CLIENT_ID` and `RIG_CLIENT_SECRET`. These we can automatically inject in our capsule by running
+The `rig.Client` expects credentials to be present in the environment variables `RIG_CLIENT_ID` and `RIG_CLIENT_SECRET`. We can automatically inject these in our capsule by running
 
 ```bash
 rig capsule config todo-demo --auto-add-service-account
 ```
 
-Although our webserver is listening on port 3333, this port is not exposed to the public. We can expose it as a public port through the Rig dashboard under your capsule's Networks tab.
-Besides making the port public, we add an authentication middleware which ensures requests have proper authentication unless the endpoint has been specifically allowed unauthorized.
+Although our web server is listening on port 3333, this port is not exposed to the public. We can expose it as a public port through the Rig dashboard under your capsule's Networks tab.
+Besides making the port public, we add an authentication middleware that ensures requests have proper authentication unless the endpoint has been specifically allowed unauthorized.
 ![image](https://i.imgur.com/rBzd1af.png)
 
-In particular the `/` endpoint need no authentication and you should be able to go to `http://localhost:3333/` and see the simple webpage served by `index.html`
+In particular, the `/` endpoint needs no authentication and you should be able to go to `http://localhost:3333/` and see the simple webpage served by `index.html`
 
 ![image](https://i.imgur.com/2d565YV.png)
 
 ## Creating users
 
 Our next step is to make an endpoint that allows the creation of new users. The endpoint `createUser` expects a `username` and `password` field in the request header and will return the `access_token` and `refresh_token` we later can use for authenticating this new user.
-The `Register` function on the `rig.Client` requires the ID of the project in which the capsule is run. Within a capsule this is automatically stored in the `RIG_PROJECT_ID` environment variable.
+The `Register` function on the `rig.Client` requires the ID of the project in which the capsule is run. Within a capsule, this is automatically stored in the `RIG_PROJECT_ID` environment variable.
 
 ```go title="main.go"
 
@@ -365,9 +365,9 @@ Now you can either create a new user or login to an existing one. If you either 
 
 ## Adding items to a user's TODO list
 
-A user will have a list of `items` associated with it, with each item having a `value` and a `checked` field. Let's make a new endpoint which sets the items for a specific user given by the access/refresh tokens returned by the `createUser` or `login` endpoint. The tokens are JWTs.
+A user will have a list of `items` associated with it, with each item having a `value` and a `checked` field. Let's make a new endpoint that sets the items for a specific user given by the access/refresh tokens returned by the `createUser` or `login` endpoint. The tokens are JWTs.
 Our `updateItems` endpoint expects the tokens to be passed in the request header, and the request body will contain a JSON string of a list of items, e.g. `[{"value": "somevalue", "checked": false}]`.
-There are multiple ways we could store data for a specific user, e.g. in a custom database table. I choose a simpler solution for convenience sake. Each Rig user has an associated `Metadata` object of type `map[string][]byte` in which we will store our `items`. When we authenticate a token pair (and if the authentication is successful), the `client` returns a UUID for the user the tokens refer to. This UUID we can then use to retrieve and update the user's `Metadata` object.
+There are multiple ways we could store data for a specific user, e.g. in a custom database table. I chose a simpler solution for convenience's sake. Each Rig user has an associated `Metadata` object of type `map[string][]byte` in which we will store our `items`. When we authenticate a token pair (and if the authentication is successful), the `client` returns a UUID for the user the tokens refer to. This UUID we can then use to retrieve and update the user's `Metadata` object.
 
 ```go title="main.go"
 type item struct {
@@ -415,7 +415,7 @@ func runServer() error {
 }
 ```
 
-Lastly we need to hook up the `Add New Item` button to the `updateItems` endpoint
+Lastly, we need to hook up the `Add New Item` button to the `updateItems` endpoint
 
 ```javascript title="index.js"
 let items = [];
@@ -537,7 +537,7 @@ at the bottom of the `updateItems` and `login` functions to see that we fetch th
 ];
 ```
 
-in the javascript console. You can play around with adding items to a user, refreshing the page (effectively logging out), and then logging in again. You should see the same list of items logged in the console.
+In the javascript console. You can play around with adding items to a user, refreshing the page (effectively logging out), and then logging in again. You should see the same list of items logged in the console.
 At last, let's display the items as HTML elements in a simple `<ul>` tag.
 
 ```javascript title="index.js"

@@ -2,12 +2,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Migrate To Rig
-
-This document provides guidance on how to migrate from other systems to Rig. Rig provides a general framework for migrating users, aswell as an implementations of this framework for specific systems such as Firebase. The concept of migrating users, and the authentication of these, revolve around migrating the users' credentials and the specific hashing parameters of these to Rig. Thus in order to migrate users to Rig, it is necessary to provide the hashing parameters of the source system aswell as the hashed credentials of the users.
+This document guides how to migrate from other systems to Rig. Rig provides a general framework for migrating users, as well as implementations of this framework for specific systems such as Firebase. The concept of migrating users, and the authentication of these, revolve around migrating the users' credentials and the specific hashing parameters of these to Rig. Thus to migrate users to Rig, it is necessary to provide the hashing parameters of the source system as well as the hashed credentials of the users.
 
 ## Migrate Users Endpoint
 
-In case that you would like to migrate from a service that Rig does not yet provide a migration from, you can implement your own migration tool, by creating users with the hashed credentials and hashed parameters. This is done using the `CreateUsers` endpoint. In the example below, we migrate a single user from a toy system:
+In case you would like to migrate from a service that Rig does not yet provide a migration from, you can implement your own migration tool, by creating users with the hashed credentials and hashed parameters. This is done using the `CreateUsers` endpoint. In the example below, we migrate a single user from a toy system:
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
