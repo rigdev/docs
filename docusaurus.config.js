@@ -66,7 +66,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/rigdev/docs',
+          editUrl: 'https://github.com/rigdev/docs/edit/main/',
           showLastUpdateAuthor: true,
           routeBasePath: '/', // Serve the docs at the site's root
           // breadcrumbs: false,
