@@ -71,7 +71,7 @@ export default function NavbarContent() {
             </Link>
           </div>
           <div style={{marginRight: "50px"}}>
-            <Link href='/api'>
+            <Link href='https://buf.build/rigdev/rig'>
               API
             </Link>
           </div>
