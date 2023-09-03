@@ -10,8 +10,6 @@ import TabItem from '@theme/TabItem';
 
 # Access the Admin CLI within the Rig Container
 
-## Overview
-
 The Rig binary has a built-in Admin CLI to perform admin requests and manage your cluster. Below, we will show you how to execute these commands inside of your Docker or Kubernetes environment. To find a list of available commands, run:
 
 <Tabs>
@@ -76,4 +74,7 @@ Use "rig-admin [command] --help" for more information about a command.
 </TabItem>
 </Tabs>
 
-Run any of commands using the Admin CLI by appending your command to your request. Eg. to access admin users, run: `rig-admin users`.
+Run any of the commands using the Admin CLI by appending your command to your request. Eg. to access admin users, run 
+```bash
+rig-admin users
+```

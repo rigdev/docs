@@ -1,23 +1,12 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Updating Email Templates with the SDK or CLI
-
-## Overview
-
-This document provides guidance on how to update email templates using the Dashboard or CLI.
-
-Email templates are used to provide UI to send to your users when they need to verify their email or reset their password.
-
-<hr class="solid" />
-
-## Update Template
-
+# Update Templates
 To update a template, you have to use the `UpdateSettings` endpoint within `ProjectSettings`. You need to pass a subject for the email (the name of the email you want to send) together with a body in HTML or plaintext. You can update the following templates using the SDK:
 
-- Welcome Email
-- Reset Password Email
-- Verify Email
+- `Welcome Email` - The email sent to a user when they either sign up or are created by an admin.
+- `Reset Password Email` - The email sent to a user when they request to reset their password.
+- `Verify Email` - The email sent to a user, when they login with their account for the first time using email, and is required to verify their email.
 
 Below is an example where we update the email verification email:
 

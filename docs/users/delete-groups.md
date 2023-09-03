@@ -24,7 +24,7 @@ if _, err := client.Group().Delete(ctx, connect.NewRequest(&group.DeleteRequest{
 })); err != nil {
     log.Fatal(err)
 }
-fmt.Println("successfully deleted group")
+log.Println("successfully deleted group")
 ```
 
 </TabItem>

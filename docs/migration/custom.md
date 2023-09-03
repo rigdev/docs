@@ -3,8 +3,6 @@ import TabItem from '@theme/TabItem';
 
 # Migrate To Rig
 
-## Overview
-
 This document provides guidance on how to migrate from other systems to Rig. Rig provides a general framework for migrating users, aswell as an implementations of this framework for specific systems such as Firebase. The concept of migrating users, and the authentication of these, revolve around migrating the users' credentials and the specific hashing parameters of these to Rig. Thus in order to migrate users to Rig, it is necessary to provide the hashing parameters of the source system aswell as the hashed credentials of the users.
 
 ## Migrate Users Endpoint

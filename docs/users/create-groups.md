@@ -23,7 +23,7 @@ resp, err := client.Group().Create(ctx, connect.NewRequest(&group.CreateRequest{
 if err != nil {
   log.Fatal(err)
 }
-fmt.Printf("successfully created group:\n%s\nWith ID: %s \n", resp.Msg.GetGroup().String(), resp.Msg.GetGroup().GetGroupId())
+log.Printf("successfully created group:\n%s\nWith ID: %s \n", resp.Msg.GetGroup().String(), resp.Msg.GetGroup().GetGroupId())
 ```
 
 </TabItem>
@@ -52,7 +52,7 @@ console.log(
 rig group create --name
 ```
 
-The name is prompted for if not provided by the flag
+The name is prompted if not provided by the flag
 </TabItem>
 </Tabs>
 
@@ -77,7 +77,7 @@ resp, err := client.Group().Create(ctx, connect.NewRequest(&group.CreateRequest{
 if err != nil {
   log.Fatal(err)
 }
-fmt.Printf("successfully created group:\n%s\nWith ID: %s \n", resp.Msg.GetGroup().GetName(), resp.Msg.GetGroup().GetGroupId())
+log.Printf("successfully created group:\n%s\nWith ID: %s \n", resp.Msg.GetGroup().GetName(), resp.Msg.GetGroup().GetGroupId())
 ```
 
 </TabItem>

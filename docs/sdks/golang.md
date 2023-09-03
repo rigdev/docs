@@ -11,8 +11,6 @@ import TabItem from '@theme/TabItem';
 
 # How to connect your Go application to Rig
 
-## Overview
-
 Rig provides the tools and infrastructure you need to develop and manage applications on Kubernetes. The Rig Golang SDK enables access to Rig services from privileged environments (such as servers or cloud) in Golang.
 
 <hr class="solid" />
@@ -74,7 +72,7 @@ func main() {
 </TabItem>
 </Tabs>
 
-The `rig.Client` needs access to a Rig service-account, which you [setup like this](/service-accounts). By default the `rig.Client` tries to read the credentials from the `RIG_CLIENT_ID` and `RIG_CLIENT_SECRET` environment variables. If these are not set, you can supply them directly using the `WithClientCredentials` option to the `NewClient` function. If your code is running from inside a Rig capsule, it is possible to automatically set the environment variables by executing
+The `rig.Client` needs access to a Rig service account, which you [setup like this](/service-accounts). By default the `rig.Client` tries to read the credentials from the `RIG_CLIENT_ID` and `RIG_CLIENT_SECRET` environment variables. If these are not set, you can supply them directly using the `WithClientCredentials` option to the `NewClient` function. If your code is running from inside a Rig capsule, it is possible to automatically set the environment variables by executing
 
 ```bash
 rig capsule config [CAPSULE_NAME] --auto-add-service-account
@@ -91,7 +89,7 @@ Now that you have a working `rig.Client` with authorization to communicate to th
 - [Database](/database)
 - [Storage](/storage)
 
-You can also check out our examples which builds (small) complete applications using the Rig platform and Go SDK
+You can also check out our examples which build (small) complete applications using the Rig platform and Go SDK
 
 - [User Management in a TODO-list app](/examples/todo)
 - [OAuth2/Social Login](/examples/oauth)

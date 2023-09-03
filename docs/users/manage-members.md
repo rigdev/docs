@@ -57,7 +57,7 @@ Example:
 rig group add-member john@acme.com
 ```
 
-In the cli it is only possible to add one member at a time. The available groups are then listed for selection.
+In the CLI it is only possible to add one member at a time. The available groups are then listed for selection.
 
 </TabItem>
 </Tabs>

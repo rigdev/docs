@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 
 # Managing Users using the SDK or CLI
 
-This document provides instructions on managing users using the SDK or CLI. It covers various operations such as fetching users and sessions, as well as updating user profile and contact information.
+This document provides instructions on managing users using the SDK or CLI. It covers various operations such as fetching users and sessions, as well as updating user profiles and users' contact information.
 
 <hr class="solid" />
 
@@ -14,7 +14,7 @@ This document provides instructions on managing users using the SDK or CLI. It c
 
 ### Getting a User
 
-To retrieve users in Rig, you can utilize the `Get` endpoint by including the unique `UUID` of the user in your request, or you can use the `Lookup` endpoint by including a unique identifier such as an email address, username of phone number:
+To retrieve users in Rig, you can utilize the `Get` endpoint by including the unique `UUID` of the user in your request, or you can use the `Lookup` endpoint by including a unique identifier such as an email address, username, or phone number:
 
 <Tabs>
 <TabItem value="go" label="Golang SDK - Get">
@@ -90,7 +90,7 @@ resp, err := client.User().List(ctx, connect.NewRequest(&user.ListRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched %d users. Total amount is: %d \n", len(resp.Msg.GetUsers()), resp.Msg.GetTotal())
+log.Printf("successfully fetched %d users. Total amount is: %d \n", len(resp.Msg.GetUsers()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -153,7 +153,7 @@ resp, err := client.User().List(ctx, connect.NewRequest(&user.ListRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched %d client.User() matching your query. Total amount is: %d \n", len(resp.Msg.GetUsers()), resp.Msg.GetTotal())
+log.Printf("successfully fetched %d client.User() matching your query. Total amount is: %d \n", len(resp.Msg.GetUsers()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -248,7 +248,7 @@ if _, err := client.User().Update(ctx, connect.NewRequest(&user.UpdateRequest{
 })); err != nil {
     log.Fatal(err)
 }
-fmt.Println("successfully updated user")
+log.Println("successfully updated user")
 ```
 
 </TabItem>
@@ -364,7 +364,7 @@ When specifying a field- and value-pair, only a single field can be updated at a
 </TabItem>
 </Tabs>
 
-**Please notice that when updating a `profile`, all profile fields will be overriden, also empty fields (fields not set).**
+**Please notice that when updating a `profile`, all profile fields **will be **overridden**, also** empty fields (fields not set).**
 
 <hr class="solid" />
 
@@ -383,7 +383,7 @@ resp, err := client.User().ListSessions(ctx, connect.NewRequest(&user.ListSessio
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched %d user sessions \n", resp.Msg.GetTotal())
+log.Printf("successfully fetched %d user sessions \n", resp.Msg.GetTotal())
 ```
 
 </TabItem>

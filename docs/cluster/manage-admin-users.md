@@ -9,13 +9,11 @@ import TabItem from '@theme/TabItem';
 
 # Manage Admin Users using the Admin CLI
 
-## Overview
-
 Admin users can login to the dashboard and perform requests to the cluster using the CLI. The admin CLI is embedded into the Rig backend container.
 
 
 ## Creating Admin Users
-Create admin users by running the following command in your Docker container og Kubernetes pod:
+Create admin users by running the following command in your Docker container or Kubernetes pod:
 <Tabs>
 <TabItem value="docker" label="Docker">
 
@@ -73,4 +71,4 @@ kubectl exec deploy/rig -- rig-admin delete user-id
 </TabItem>
 </Tabs>
 
-Exchange the `user-id` with the id of your user. If you don not know, [fetch your users](/cluster/manage-admin-users#fetching-admin-users) and copy the id.
+Exchange the `user-id` with the ID of your user. If you do not know, [fetch your users](/cluster/manage-admin-users#fetching-admin-users) and copy the id.

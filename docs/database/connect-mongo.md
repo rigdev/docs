@@ -1,9 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Connecting to MongoDB using the SDK
-
-## Overview
+# Connecting to MongoDB
 
 This document provides instructions on how to connect your application to MongoDB using the SDK.
 
@@ -37,7 +35,7 @@ res, err := client.Database().GetEndpoint(ctx, &database.Credential{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("Mongo Endpoint: %s \n", res.Msg.GetEndpoint())
+log.Printf("Mongo Endpoint: %s \n", res.Msg.GetEndpoint())
 ```
 
 </TabItem>

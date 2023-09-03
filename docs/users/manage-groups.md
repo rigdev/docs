@@ -27,7 +27,7 @@ resp, err := client.Group().Get(ctx, connect.NewRequest(&group.GetRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched group: %s \n", resp.Msg.GetGroup().GetName())
+log.Printf("successfully fetched group: %s \n", resp.Msg.GetGroup().GetName())
 ```
 
 </TabItem>
@@ -70,7 +70,7 @@ resp, _ := client.Group().List(ctx, connect.NewRequest(&group.ListRequest{
         Limit:  10,
     },
 }))
-fmt.Printf("successfully fetched %d groups. Total amount is: %d \n", len(resp.Msg.GetGroups()), resp.Msg.GetTotal())
+log.Printf("successfully fetched %d groups. Total amount is: %d \n", len(resp.Msg.GetGroups()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -122,7 +122,7 @@ resp, _ := client.Group().ListGroupsForUser(ctx, connect.NewRequest(&group.ListG
         Limit:  10,
     },
 }))
-fmt.Printf("successfully fetched %d groups. Total amount is: %d \n", len(resp.Msg.GetGroups()), resp.Msg.GetTotal())
+log.Printf("successfully fetched %d groups. Total amount is: %d \n", len(resp.Msg.GetGroups()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -183,7 +183,7 @@ if _, err := client.Group().Update(ctx, connect.NewRequest(&group.UpdateRequest{
 })); err != nil {
     log.Fatal(err)
 }
-fmt.Println("successfully updated group")
+log.Println("successfully updated group")
 ```
 
 </TabItem>

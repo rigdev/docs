@@ -1,11 +1,9 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Managing Databases using the SDK or CLI
+# Managing Databases
 
-## Overview
-
-This document provides instructions on managing databases using the SDK or CLI. It covers various operations such as fetching and updating databases, as well as creating, feching and deleting tables (or collections).
+This document provides instructions on managing databases using the SDK or CLI. It covers various operations such as fetching and updating databases, as well as creating, fetching, and deleting tables (or collections).
 
 <hr class="solid" />
 
@@ -13,7 +11,7 @@ This document provides instructions on managing databases using the SDK or CLI. 
 
 ### Getting a Database by UUID
 
-To retrieve databases in Rig, you can utilize the `Get` endpoint by including the unique `UUID` of the database in your request. Alternativly you can utilize the `Lookup`endpoint which requires a database name. In the CLI, both of these endpoints are gathered under the same `get`command, where you can then either use the ID or the name as an identifier.
+To retrieve databases in Rig, you can utilize the `Get` endpoint by including the unique `UUID` of the database in your request. Alternatively, you can utilize the `Lookup` endpoint which requires a database name. In the CLI, both of these endpoints are gathered under the same `get` command, where you can then either use the ID or the name as an identifier.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -37,7 +35,7 @@ resp, err := client.Database().LookupDatabase(ctx, connect.NewRequest(&database.
 if err != nil {
     log.Fatal(err)
 }
-log.Printf("successfully fetched database %v\n", resp.Msg.GetDatabase())
+log.Printf("successfully fetched database %v\n", resp.Msg.GetDatabase().GetName())
 ```
 
 </TabItem>
@@ -49,14 +47,14 @@ const databaseID = ""; // insert your database ID here
 const resp = await client.databasesClient.getDatabase({
   databaseId: databaseID,
 });
-console.log("successfully fetched database", resp.database);
+console.log("successfully fetched database", resp.database.name);
 
 // Lookup Database
 const databaseName = "stocks";
 const resp = await client.databasesClient.lookupDatabase({
   name: databaseName,
 });
-console.log("successfully fetched database", resp.database);
+console.log("successfully fetched database", resp.database.name);
 ```
 
 </TabItem>
@@ -130,7 +128,7 @@ The above query will fetch `10` databases in your project. The total amount of d
 
 ## Managing Tables
 
-A database consists of a collection of tables, also known as collections. These tables can be created and managed using either the SDK or CLI.
+A database consists of a collection of tables (Analogue to collections in MongoDB). These tables can be created and managed using either the SDK or CLI.
 
 ### Creating a Table
 

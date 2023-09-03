@@ -8,8 +8,7 @@ import ThemedImage from '@theme/ThemedImage';
 
 # Service Accounts
 
-Service Accounts are be used to authenticate and identify your application and Rig project against the Rig backend. Service accounts can also automatically be created and injected into your Rig Capsules as environment variables allowing your capsules to authenticate against the Rig backend.
-
+Service Accounts are used to authenticate and identify your application and Rig project against the Rig backend. Service accounts can also automatically be created and injected into your Rig Capsules as environment variables allowing your capsules to authenticate against the Rig backend.
 <hr class="solid" />
 
 ## Create Service Accounts

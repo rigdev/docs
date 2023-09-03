@@ -1,17 +1,9 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Uploading Objects using the SDK or CLI
+# Uploading Objects
 
-## Overview
-
-This document provides instruction on how to upload objects to Rig Storage using the SDK or CLI.
-
-<hr class="solid" />
-
-## Uploading Objects
-
-The `UploadObject` endpoint takes no parameters, and returns a StreamClient, which is then used to upload chunks of data using the `Send` method. The first chunk of data sent must contain the object meta data, and the subsequent chunks can then contain the object data. For the CLI, the upload functionality is gathered under the copy command, where the from path is the local file path, and the to path is the path to the object in Rig Storage. In the CLI it is also possible to specify a recursive flag, that will upload all files in a directory.
+The `UploadObject` endpoint takes no parameters and returns a StreamClient, which is then used to upload chunks of data using the `Send` method. The first chunk of data sent must contain the object metadata, and the subsequent chunks can then contain the object data. For the CLI, the upload functionality is gathered under the copy command, where the from path is the local file path, and the to path is the path to the object in Rig Storage. In the CLI it is also possible to specify a recursive flag, that will upload all files in a directory.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">

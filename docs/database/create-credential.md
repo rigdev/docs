@@ -1,11 +1,9 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating Database Credentials using the SDK or CLI
+# Creating Database Credentials
 
-## Overview
-
-Database credentials can be used to connect your application to your database using the SDK. This document provides instructions on how to create database credentials using the SDK or CLI.
+Database credentials can be used to connect your application to your database. This document provides instructions on how to create database credentials using the SDK or CLI.
 
 <hr class="solid" />
 
@@ -50,6 +48,6 @@ rig database create-credential [id | db-name] --name
 rig database create-credential foods -n food-credentials
 ```
 
-The name of the credentials will then be prompted for
+The name of the credentials will then be prompted if not provided by the flag
 </TabItem>
 </Tabs>

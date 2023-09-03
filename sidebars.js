@@ -229,12 +229,6 @@ const sidebars = {
           label: "Templates",
           className: "docpage-sidebar-item",
         },
-        {
-          type: "doc",
-          id: "auth/advanced",
-          label: "Advanced",
-          className: "docpage-sidebar-item",
-        },
       ],
     },
     {

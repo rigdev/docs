@@ -24,7 +24,7 @@ if _, err := client.User().Delete(ctx, connect.NewRequest(&user.DeleteRequest{
 })); err != nil {
   log.Fatal(err)
 }
-fmt.Println("successfully deleted user")
+log.Println("successfully deleted user")
 ```
 
 </TabItem>
