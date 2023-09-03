@@ -17,7 +17,7 @@ This document provides instructions on managing users using the SDK or CLI. It c
 To retrieve users in Rig, you can utilize the `Get` endpoint by including the unique `UUID` of the user in your request, or you can use the `Lookup` endpoint by including a unique identifier such as an email address, username, or phone number:
 
 <Tabs>
-<TabItem value="go" label="Golang SDK - Get">
+<TabItem value="go" label="Golang SDK">
 
 ```go
 userID := "" // NOTE: insert a specifc userID here
@@ -39,7 +39,7 @@ log.Printf("successfully fetched user: %s \n", resp.Msg.GetUser().GetUserId())
 ```
 
 </TabItem>
-<TabItem value="typescript" label="Typescript SDK - Get">
+<TabItem value="typescript" label="Typescript SDK">
 
 ```typescript
 const userID = "" // NOTE: insert a specifc userID here
@@ -390,11 +390,11 @@ log.Printf("successfully fetched %d user sessions \n", resp.Msg.GetTotal())
 <TabItem value="typescript" label="Typescript SDK">
 
 ```typescript
-const userID = "" // NOTE: insert a specifc userID here
+const userID = ""; // NOTE: insert a specifc userID here
 const resp = await client.user.listSessions({
-    userId: userID,
-})
-console.log(`successfully fetched ${resp.total} user sessions`)
+  userId: userID,
+});
+console.log(`successfully fetched ${resp.total} user sessions`);
 ```
 
 </TabItem>
