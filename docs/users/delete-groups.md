@@ -4,15 +4,13 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# How to Delete Groups
-
-## Overview
+# Deleting Groups
 
 This document provides instructions on how to delete groups using the SDK or CLI.
 
 <hr class="solid" />
 
-## Delete Group
+## Delete a Group
 
 You can delete a group on your backend using the `Delete` endpoint:
 
@@ -26,7 +24,7 @@ if _, err := client.Group().Delete(ctx, connect.NewRequest(&group.DeleteRequest{
 })); err != nil {
     log.Fatal(err)
 }
-fmt.Println("successfully deleted group")
+log.Println("successfully deleted group")
 ```
 
 </TabItem>

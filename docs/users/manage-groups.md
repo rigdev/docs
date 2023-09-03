@@ -6,19 +6,7 @@ import TabItem from '@theme/TabItem';
 
 # Managing Groups using the SDK or CLI
 
-## Overview
-
 This document provides instructions on managing groups using the SDK or CLI. It covers various operations such as fetching and updating groups, as well as fetching groups for a specific user.
-
-<hr class="solid" />
-
-### Scenario
-
-You want to leverage one or more of the following admin functionalities in Rig:
-
-- Listing groups: This functionality allows you to retrieve a list of groups in your system.
-- Updating groups: This functionality enables you to modify group information.
-- Listing groups for a user: Retrive all groups that a user is part of.
 
 <hr class="solid" />
 
@@ -39,7 +27,7 @@ resp, err := client.Group().Get(ctx, connect.NewRequest(&group.GetRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched group:\n%s", resp.Msg.GetGroup().String())
+log.Printf("successfully fetched group: %s \n", resp.Msg.GetGroup().GetName())
 ```
 
 </TabItem>
@@ -82,7 +70,7 @@ resp, _ := client.Group().List(ctx, connect.NewRequest(&group.ListRequest{
         Limit:  10,
     },
 }))
-fmt.Printf("successfully fetched %d client.Group(). Total amount is: %d", len(resp.Msg.GetGroups()), resp.Msg.GetTotal())
+log.Printf("successfully fetched %d groups. Total amount is: %d \n", len(resp.Msg.GetGroups()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -134,7 +122,7 @@ resp, _ := client.Group().ListGroupsForUser(ctx, connect.NewRequest(&group.ListG
         Limit:  10,
     },
 }))
-fmt.Printf("successfully fetched %d client.Group(). Total amount is: %d", len(resp.Msg.GetGroups()), resp.Msg.GetTotal())
+log.Printf("successfully fetched %d groups. Total amount is: %d \n", len(resp.Msg.GetGroups()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
@@ -195,7 +183,7 @@ if _, err := client.Group().Update(ctx, connect.NewRequest(&group.UpdateRequest{
 })); err != nil {
     log.Fatal(err)
 }
-fmt.Println("successfully updated group")
+log.Println("successfully updated group")
 ```
 
 </TabItem>
@@ -239,8 +227,6 @@ Example:
 rig group update admins -f name -v editors
 rig group update admins -f set-meta-data -v '{"key":"role","value":"1234"}'
 ```
-
-The updates are prompted.
 
 </TabItem>
 </Tabs>

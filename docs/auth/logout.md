@@ -4,11 +4,9 @@ import SetupCli from '../../src/markdown/prerequisites/setup-cli.md'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Implementing User Logout using the SDK or CLI
+# Implementing User Logout
 
-## Overview
-
-This document provides instructions on how to log out a user using the SDK. By logging out, you will invalidate the user's authentication session, including using their refresh tokens to create new token pairs, preventing their further usage.
+This document provides instructions on how to log out a user using the SDK. By logging out, you will invalidate the user's authentication session, including using their refresh token to create new token pairs, preventing their further usage.
 
 <hr class="solid" />
 

@@ -1,9 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating Database Credentials using the SDK or CLI
-
-## Overview
+# Creating Database Credentials
 
 This document provides instructions on how to delete database credentials using the SDK or CLI.
 

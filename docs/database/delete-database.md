@@ -1,9 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Deleting Databases using the SDK or CLI
-
-## Overview
+# Deleting Databases
 
 This document provides instructions on how to delete databases using the SDK or CLI.
 

@@ -1,19 +1,16 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Implementing User Login with SDK or CLI
+# Implementing User Login
+This document guides how to log in users using the SDK or CLI and perform email or phone number verification. You will learn the necessary steps to authenticate users and ensure the validity of their email or phone numbers.
 
-## Overview
-
-This document provides guidance on how to log in users using the SDK or CLI and perform email or phone number verification. You will learn the necessary steps to authenticate users and ensure the validity of their email or phone numbers.
-
-Please note that this guide does not include instructions on how to authenticate users using OAuth providers such as "Login with Google." If you are interested in implementing authentication with social providers, please refer to the [social login section](/auth/social-login) for detailed instructions and guidance.
+Please note that this guide does not include instructions on how to authenticate users using OAuth providers such as "Login with Google". If you are interested in implementing authentication with social providers, please refer to the [social login section](/auth/social-login) for detailed instructions.
 
 <hr class="solid" />
 
 ## Login
 
-To authenticate users in your backend, you can utilize the `Login` endpoint. When logging in a user, you must provide their password along with an identifier. The supported identifiers include email addresses, phone numbers, and usernames.
+To authenticate users, you can utilize the `Login` endpoint. When logging in a user, you must provide their password along with an identifier. The supported identifiers include email addresses, phone numbers, and usernames.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -24,14 +21,14 @@ resp, err := client.Authentication().Login(ctx, connect.NewRequest(&authenticati
         UserPassword: &authentication.UserPassword{
             Password:   "Test1234!",
             Identifier: &model.UserIdentifier{Identifier: &model.UserIdentifier_Email{Email: "johndoe@acme.com"}},
-            ProjectId:     "MyProjectId1234",
+            ProjectId:     "MyProjectId",
         },
     },
 }))
 if err != nil {
     log.Fatal(err)
 }
-log.Printf("generated token pair: \nAccess token: %s\nRefresh token: %s", resp.Msg.Token.AccessToken, resp.Msg.Token.RefreshToken)
+log.Printf("generated token pair: \nAccess token: %s\nRefresh token: %s \n", resp.Msg.Token.AccessToken, resp.Msg.Token.RefreshToken)
 ```
 
 </TabItem>
@@ -63,7 +60,7 @@ console.log("generated token pair", resp.token);
 rig auth login --user --password
 ```
 
-Exampel:
+Example:
 
 ```sh
 rig auth login -u johndoe@acme.com -p Test1234!
@@ -72,7 +69,7 @@ rig auth login -u johndoe@acme.com -p Test1234!
 </TabItem>
 </Tabs>
 
-If a user attempts to log in using the email/password or phone/password method and **account verification is enabled**, it is necessary for that user to [verify their account](/auth/login#account-verification) before the system generates an access/refresh token.
+If a user attempts to log in using the email/password or phone/password method and **account verification is enabled**, that user must [verify their account](/auth/login#account-verification) before the system generates an access/refresh token.
 
 If a user logs in without verifying their identifier, Rig will send an email or text message to the user's contact information (used for verification) and return an error in response.
 
@@ -97,7 +94,7 @@ if _, err := client.Authentication().VerifyEmail(ctx, connect.NewRequest(&authen
 })); err != nil {
     log.Fatal(err)
 }
-log.Printf("successfully verified email")
+log.Println("successfully verified email")
 ```
 
 </TabItem>
@@ -107,8 +104,8 @@ log.Printf("successfully verified email")
 if _, err := client.Authentication().VerifyEmail(ctx, connect.NewRequest(&authentication.VerifyEmailRequest{
     Code:   "CODE-FROM-EMAIL",
     Email:  "johndoe@acme.com",
-    ProjectId: "MyProjectId1234",
-})
+    ApiKey: "MyProjectId1234",
+}))
 console.log("successfully verified email")
 ```
 
@@ -144,7 +141,7 @@ await client.auth.verifyPhoneNumber({
     code:   "CODE-FROM-EMAIL",
     phoneNumber:  "+4522122798",
     projectId: "MyProjectId1234",
-}
+})
 console.log("successfully verified phone number")
 ```
 

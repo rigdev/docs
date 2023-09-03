@@ -4,17 +4,13 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Deleting Users using the SDK or CLI
-
-## Overview
+# Deleting Users
 
 This document provides instructions on how to delete users using the SDK or CLI.
 
 <hr class="solid" />
 
-## Deleting Users
-
-### Deleting a Single User
+## Deleting a Single User
 
 To delete a single user from Rig, you can utilize the `Delete` endpoint:
 
@@ -28,7 +24,7 @@ if _, err := client.User().Delete(ctx, connect.NewRequest(&user.DeleteRequest{
 })); err != nil {
   log.Fatal(err)
 }
-fmt.Println("successfully deleted user")
+log.Println("successfully deleted user")
 ```
 
 </TabItem>

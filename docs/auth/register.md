@@ -1,21 +1,20 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Registering Users using the SDK or CLI
+# Registering Users
 
-## Overview
-
-This document provides instructions on registering users using either the SDK or CLI. You have the option to manage authentication through your own backend or directly from the frontend. In the following example, we demonstrate the use of the SDK with backend languages.
+This document provides instructions on registering users using either the SDK or CLI. 
+The register endpoint is unauthenticated and thus allows you to create users in Rig if registration is enabled in your project.
 
 <hr class="solid" />
 
 ## Register
 
-To register users in your backend, you can utilize the Register endpoint. When registering a user, you must supply a password and an identifier. The identifiers can be usernames, emails, or phone numbers.
+To register users in Rig, you can utilize the Register endpoint. When registering a user, you must supply a password and an identifier. The identifiers can be usernames, emails, or phone numbers.
 
 To control the enabled identifiers in your system, please refer to the [login methods section](/auth/auth-settings).
 
-Make sure to set the `ProjectId` field to match your project ID. Register a user with an email and password, by executing the following command:
+Make sure to set the `ProjectId` field to match your project ID.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -33,8 +32,8 @@ resp, err := client.Authentication().Register(ctx, connect.NewRequest(&authentic
 if err != nil {
     log.Fatal(err)
 }
-log.Printf("successfully created user with id %s", resp.Msg.UserId.String())
-log.Printf("generated token pair: \nAccess token: %s\nRefresh token: %s", resp.Msg.Token.AccessToken, resp.Msg.Token.RefreshToken)
+log.Printf("successfully registered user with id %s \n", resp.Msg.GetUserId())
+log.Printf("generated token pair: \nAccess token: %s\nRefresh token: %s \n", resp.Msg.GetToken().GetAccessToken(), resp.Msg.GetToken().GetRefreshToken())
 ```
 
 </TabItem>
@@ -56,7 +55,7 @@ const resp = await client.auth.register({
     },
   },
 });
-console.log(`successfully created user with id ${resp.userId}`);
+console.log(`successfully registered user with id ${resp.userId}`);
 console.log(
   `generated token pair: \nAccess token: %s\nRefresh token: ${resp.token?.accessToken}`,
 );
@@ -65,4 +64,4 @@ console.log(
 </TabItem>
 </Tabs>
 
-When a user is created using the username/password method, the response will include an access token and a refresh token pair. However, if a user is created using the email/password or phone/password method, it is necessary for that user to [verify their account](/auth/login#verify-email) before they can log in.
+When a user is created using the username/password method, the response will include an access token and a refresh token pair. However, if a user is created using the email/password or phone/password method, that user must [verify their account](/auth/login#verify-email) before they can log in.

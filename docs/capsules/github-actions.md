@@ -7,21 +7,18 @@ import TabItem from '@theme/TabItem';
 import ThemedImage from '@theme/ThemedImage';
 
 # Deploy your application to a Capsule using Github Actions
-
-## Overview
-
-In this document you'll learn how to build and deploy your application automatically using [Github Actions](https://github.com/features/actions).
+In this document, you'll learn how to build and deploy your application automatically using [Github Actions](https://github.com/features/actions).
 
 ## Prerequisites
 
-It is assumed that you have a Rig Capsule up and running, see [Deploy Your Application](/capsules/create-deploy) if not. You should also have a Github repository which you would like to build and deploy to your capsule.
+It is assumed that you have a Rig Capsule up and running, see [Deploy Your Application](/capsules/create-deploy) if not. You should also have a GitHub repository that you would like to build and deploy to your capsule.
 
 ## Example workflow using the actions
 
 Rig exposes [two different actions](https://github.com/rigdev/actions), `build` and `deploy`. The `build` action assumes you have a Docker image you want to deploy and makes a Rig build off of it. The `deploy` action can then deploy the previously (or any other) generated build to a capsule.
 As you need a Docker image to build and deploy, it is common to prefix these two actions with [Docker Github actions](https://docs.docker.com/build/ci/github-actions/) to build and publish an image.
 
-The following Github workflow example showcases how you can
+The following GitHub workflow example showcases how you can
 
 1. Build a Docker image from a new commit
 2. Make a Rig build from that Docker image

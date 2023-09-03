@@ -1,17 +1,14 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating Databases using the SDK or CLI
-
-## Overview
+# Creating Databases
 
 This document provides instructions on how to create databases using the SDK or CLI in Rig.
 
 <hr class="solid" />
 
 ## Creating Databases
-
-To create database on your backend, you can utilize the `Create` endpoint. Set the `Name` field to specify the desired name for the database that you want to create. This name must be unique in your project.
+To create a database on your backend, you can utilize the `Create` endpoint. Set the `Name` field to specify the desired name for the database that you want to create. This name must be unique to your project.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -52,6 +49,6 @@ Example:
 rig database create --name foods --type mongo
 ```
 
-the fields of the database will be prompted for
+The fields of the database will be prompted for
 </TabItem>
 </Tabs>

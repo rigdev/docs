@@ -6,11 +6,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import ThemedImage from '@theme/ThemedImage';
 
-# Deploy your application as a Capsule using the CLI
+# Deploy your application as a Capsule
 
-## Overview
-
-In this document, you’ll learn how to build and deploy you application to Rig using the CLI.
+In this document, you’ll learn how to build and deploy your application to Rig using the CLI.
 
 <hr class="solid" />
 
@@ -24,7 +22,7 @@ It is assumed that you have a Dockerized application to deploy. If not, you can 
 
 ## Create a Capsule
 
-Rig uses the concept of capsules which is a collection of ressources we create to manage your application on Docker or Kubernetes. Creating a Capsule using the CLI will take you through a series of steps to collect all the information we need create your Capsule. This also includes potentially creaing your first Build and performing the first Rollout.
+Rig uses the concept of capsules which is a collection of resources we create to manage your application on Docker or Kubernetes. Creating a Capsule using the CLI will take you through a series of steps to collect all the information needed to create your Capsule. This also includes potentially creating your first Build and performing your first Rollout.
 
 To create the Capsule, from your terminal, run
 
@@ -32,7 +30,7 @@ To create the Capsule, from your terminal, run
 rig capsule create
 ```
 
-Your Capsule should now be ready and if you created it with an image and a replica count greater than one, you should be able to view its logs by running (if not, just continue)
+Your Capsule should now be ready and if you created it with an image and a non-zero replica count, you should be able to view its logs by running:
 
 ```bash
 rig capsule logs <capsule-name>
@@ -62,13 +60,13 @@ rig capsule list-builds <capsule-name>
 
 ## Rollout a Build
 
-We are now ready to run the build we just created. Rollout your build using the following command
+You are now ready to run the build we just created. Rollout your build using the following command
 
 ```bash
 rig capsule deploy <capsule-name> --build-id <build-id>
 ```
 
-Exchange build-id with the ID of your build. The last thing we need to do is to scale our capsule to a number of replicas. To scale our capusle to 2 replicas, we run
+Lastly, you can scale your capsule to more instances. To scale the number of instances to 2 run
 
 ```bash
 rig capsule scale <capusle-name> --replicas 2

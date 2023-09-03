@@ -6,8 +6,7 @@ import SetupCli from '../../src/markdown/prerequisites/setup-cli.md'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Resetting Passwords using the SDK or CLI
-## Overview
+# Resetting Passwords
 This document provides instructions on how to reset a user's password using the SDK or CLI. The user will receive a reset password link either through SMS or email. Please note that for security reasons, we require the user to be verified before they can perform this action.
 
 If a user has not yet verified their account and is unable to remember their password, please utilize the Dashboard to update the user's password.
@@ -16,7 +15,7 @@ If a user has not yet verified their account and is unable to remember their pas
 
 ## Implementation
 ### 1. Send Reset Password Link
-To send a reset password template, you can utilize the `SendPasswordReset` endpoint. Make the API call with your `ProjectId` and the user's `Identifier`. The available identifiers include usernames, emails, and phone numbers. Make sure to include one of these fields when calling the client:
+To send a reset password template, you can utilize the `SendPasswordReset` endpoint. Make the API call with your `Project ID` and the user's `Identifier`. The available identifiers include usernames, emails, and phone numbers. Make sure to include one of these fields when calling the client:
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -34,10 +33,10 @@ if _, err := client.Authentication().SendPasswordReset(ctx, connect.NewRequest(&
 </TabItem>
 </Tabs>
 
-By performing this action, the reset-password flow will be triggered in the backend, and the user will receive instructions via email or text message. You can customize the reset password templates by accessing the [auth templates section](/auth/auth-templates).
+By performing this action, the reset password flow will be triggered in the backend, and the user will receive instructions via email or text message. You can customize the reset password templates by accessing the [auth templates section](/auth/auth-templates).
 
 ### 2. Reset Password
-To reset the password, you can utilize the `ResetPassword` endpoint. Make the API call with your `ProjectId`, the user's `Identifier`, the `NewPassword`, and the `Code` that was sent to the user in the previous step. The available identifiers include usernames, emails, and phone numbers. Make sure to include these fields when making the call to the client:
+To reset the password, you can utilize the `ResetPassword` endpoint. Make the API call with your `Project ID`, the user's `Identifier`, the `NewPassword`, and the `Code` that was sent to the user in the previous step. The available identifiers include usernames, emails, and phone numbers. Make sure to include these fields when making the call to the client:
 <Tabs>
 <TabItem value="go" label="Golang SDK">
 
@@ -48,7 +47,7 @@ if _, err := client.Authentication().ResetPassword(ctx, connect.NewRequest(&auth
     Identifier: &model.UserIdentifier{
         Identifier: &model.UserIdentifier_Email{Email: "johndoe@acme.com"},
     },
-    ProjectId: "YOUR-PROJECT-ID",
+    ProjectID: "YOUR-PROJECT-ID",
 })); err != nil {
     log.Fatal(err)
 }

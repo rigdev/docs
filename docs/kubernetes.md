@@ -7,36 +7,32 @@ pagination_prev: null
 import {RIG_CHART_VERSION} from "../src/constants/versions"
 
 # How to install Rig on Kubernetes
+Rig shines when it gets to run in a Kubernetes environment. It
+lowers the barrier of entry for engineers as they won't have to learn the
+complex APIs of Kubernetes.
 
-Rig really shines when it gets to run in a kubernetes environement. It
-lowers the barrier of entry for engineers as they wont have to learn the
-complex APIs of kubernetes.
+## Run Rig in a local Kubernetes environment
 
-## Run Rig in a local kubernetes environment
-
-Rig, can be run locally using [kind](https://kind.sigs.k8s.io/). A local
-kubernetes environment is easy to spin up using kind.
+Rig can be run locally using [kind](https://kind.sigs.k8s.io/). A local Kubernetes environment is easy to spin up using kind.
 
 ```bash
 kind create cluster
 ```
 
-the installation instructions doesn't really differ wether you choose to test
-Rig in a local kubernetes environment or a real kubernetes environment.
+The installation instructions do not differ whether you choose to test
+Rig in a local Kubernetes environment or a real Kubernetes environment.
 <hr class="solid" />
 
 ## Dependencies
-
-In order to run rig, we first need to have an available
-[mongodb](https://www.mongodb.com/) cluster and [minio](https://min.io/) for
-object storage. We recommend to use managed services in production
+To run Tig, we first need to have an available
+[MongoDB](https://www.mongodb.com/) cluster and [Minio](https://min.io/) for
+object storage. We recommend using managed services in production
 environments. If you don't mind running these services your self follow along
-for instructions of how to install and use their respective kubernetes
-    operators.
+for instructions on how to install and use their respective Kubernetes operators.
 
 ### MongoDB
 
-Rig relies on mongodb. An easy way to get running quickly is to use the
+Rig relies on Mongodb. An easy way to get running quickly is to use the
 community-operator.
 
 ```bash
@@ -46,7 +42,7 @@ helm upgrade --install mongodb-community-operator mongodb/community-operator \
   --create-namespace
 ```
 
-Create a mongodb cluster using the operator `kubectl apply` a file with the
+Create a MongoDB cluster using the operator `kubectl apply` a file with the
 following contents.
 
 ```yaml
@@ -90,7 +86,7 @@ stringData:
 
 ### Minio
 
-We use minio for builtin docker registry. Minio can likewise be setup using the
+We use minio for the built-in docker registry. Minio can likewise be setup using the
 official operator. The minio-operator helm repo also has a chart for quickly
 setting up a tenant.
 
@@ -110,7 +106,7 @@ helm upgrade --install minio minio-operator/tenant \
 
 ## Installation
 
-With the dependencies installed and running, we can setup rig by installing
+With the dependencies installed and running, we can setup Rig by installing
 the rig helm chart.
 
 <!--- TODO: validate if this work with the defaults of the chart or adjust

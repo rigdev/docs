@@ -1,13 +1,9 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Downloading Objects using the SDK or CLI
-This document provides instruction on how to download objects to Rig Storage using the SDK or CLI.
+# Downloading Objects
 
-<hr class="solid" />
-
-## Uploading Objects
-The `DownloadObject` endpoint takes a bucket and a path as input, and returns a StreamClient, which is then used to recieve chunks of data using the `Receive` method. For the CLI, the download functionality is gathered under the copy command, where the to path is the local file path, and the from path is the path of the object in Rig Storage. In the CLI it is also possible to specify a recursive flag, that will download all files in a directory.
+The `DownloadObject` endpoint takes a bucket and a path as input and returns a StreamClient, which is then used to receive chunks of data using the `Receive` method. For the CLI, the download functionality is gathered under the copy command, where the to-path is the local file path, and the from-path is the path of the object in Rig Storage. In the CLI it is also possible to specify a recursive flag, that will download all files in a directory.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">

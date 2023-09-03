@@ -5,7 +5,7 @@ pagination_prev: null
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating Users using the SDK or CLI
+# Creating Users
 
 This document provides instructions on how to create users using the SDK or the CLI in Rig. Users in Rig can be created with one or more of three types of unique identifiers:
 
@@ -39,8 +39,8 @@ resp, err := client.User().Create(ctx, connect.NewRequest(&user.CreateRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully created user: %s \n", res.Msg.GetUser().GetUserInfo().GetEmail())
-fmt.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
+log.Printf("successfully created user: %s \n", res.Msg.GetUser().GetUserInfo().GetEmail())
+log.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
 ```
 
 </TabItem>
@@ -106,8 +106,8 @@ resp, err := client.User().Create(ctx, connect.NewRequest(&user.CreateRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully created user: %s \n", resp.Msg.GetUser().GetUserInfo().GetPhoneNumber())
-fmt.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
+log.Printf("successfully created user: %s \n", resp.Msg.GetUser().GetUserInfo().GetPhoneNumber())
+log.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
 ```
 
 </TabItem>
@@ -173,8 +173,8 @@ resp, err := client.User().Create(ctx, connect.NewRequest(&user.CreateRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully created user: %s \n", resp.Msg.GetUser().GetUserInfo().GetUsername())
-fmt.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
+log.Printf("successfully created user: %s \n", resp.Msg.GetUser().GetUserInfo().GetUsername())
+log.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
 ```
 
 </TabItem>
@@ -260,8 +260,8 @@ resp, err := client.User().Create(ctx, connect.NewRequest(&user.CreateRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully created user: %s \n", resp.Msg.GetUser().GetUserInfo().GetUsername())
-fmt.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
+log.Printf("successfully created user: %s \n", resp.Msg.GetUser().GetUserInfo().GetUsername())
+log.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
 ```
 
 </TabItem>
@@ -314,13 +314,13 @@ Example:
 rig user update markGrayson1234 -f profile -v '{"firstName":"John","lastName":"Doe","preferredLanguage":"DK","country":"Denmark"}'
 ```
 
-Setting these additional fields using the CLI requires first creating a user and then subsequently updating the user where the updates are prompted for.
+Setting these additional fields using the CLI requires first creating a user and then subsequently updating the user where the updates are prompted.
 </TabItem>
 </Tabs>
 
 ### Metadata
 
-As part of the user creation process, you have the ability to include custom metadata for your users. This metadata is added as a byte array. In the following example, we will utilize JSON marshalling to convert our data into bytes and store it on the user:
+As part of the user creation process, you can include custom metadata for your users. This metadata is added as a byte array. In the following example, we will utilize JSON marshalling to convert our data into bytes and store it on the user:
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -363,8 +363,8 @@ resp, err := client.User().Create(ctx, connect.NewRequest(&user.CreateRequest{
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully created user: %s \n", resp.Msg.GetUser().GetUserInfo().GetUsername())
-fmt.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
+log.Printf("successfully created user: %s \n", resp.Msg.GetUser().GetUserInfo().GetUsername())
+log.Printf("with userID: %s \n", resp.Msg.GetUser().GetUserId())
 ```
 
 </TabItem>

@@ -11,7 +11,7 @@ and follow the instructions in the guide to [setup the Golang SDK](/sdks). You c
 
 ## Simple database examples setup
 
-Our project will contain a `main.go`, `mongo.go`, `go.mod` and go.sum`files with`main.go`powering the application. We will also have a`Dockerfile` so we can make a Docker image and deploy it as a Rig capsule. The file structure will be
+Our project will contain a `main.go`, `mongo.go`, `go.mod` and `go.sum` files with `main.go` powering the application. We will also have a `Dockerfile` so we can make a Docker image and deploy it as a Rig capsule. The file structure will be
 
 ```
 database-demo
@@ -59,7 +59,7 @@ func main() {
 
 ## Deploying as a Rig capsule
 
-We will run the applicaiton by deploying it as a Rig capsule running locally. This also allows us to easier integrate with the Rig authorization workflow. Start by making a new capsule
+We will run the application by deploying it as a Rig capsule running locally. This also allows us to easier integrate with the Rig authorization workflow. Start by making a new capsule
 
 ```bash
 rig capsule create database-demo
@@ -85,7 +85,7 @@ CONTAINER ID   IMAGE                            COMMAND                  CREATED
 0294f8e4d7bc   database-demo:latest             "go run ./main.go"       2 seconds ago   Up 1 second                                                             database-demo-instance-0
 ```
 
-The `rig.Client` expects credentials to be present in the environment variable `RIG_CLIENT_ID` and `RIG_CLIENT_SECRET`. These we can automatically inject in our capsule by running
+The `rig.Client` expects credentials to be present in the environment variables `RIG_CLIENT_ID` and `RIG_CLIENT_SECRET`. We can automatically inject these in our capsule by running
 
 ```bash
 rig capsule config database-demo --auto-add-service-account
@@ -166,7 +166,7 @@ var mongoConfig = dbConfig{
 }
 ```
 
-The database name and credentials we will read from environment variables. We can configure these environment variables within the Rig capsule that deploys our application. We will get back to that a bit later.
+We will read the database name and credentials from environment variables, and we can configure these environment variables within the Rig capsule that deploys our application. We will get back to that a bit later.
 With that let's try to connect to our DB
 
 ```go title="main.go"
@@ -208,7 +208,7 @@ func main() {
 }
 ```
 
-This should give us a valid handle to a `*mongo.Database` object interfacing with our database. If you re-deploy the capsule with just these changes, the environment variables we read into the `dbConfig` will not be set. To set them in the capsule, go to you local Rig dashboard (`localhost:4747`) and under the `Settings` tab of your database-demo capsule. Here you can set environment variables as shown below
+This should give us a valid handle to a `*mongo.Database` object interfacing with our database. If you re-deploy the capsule with just these changes, the environment variables we read into the `dbConfig` will not be set. To set them in the capsule, go to your local Rig dashboard (`localhost:4747`) and under the `Settings` tab of your database-demo capsule. Here you can set environment variables as shown below
 ![image](https://i.imgur.com/niczrR3.png)
 
 It's time to use our database connection! Our cake-rating app will have a backend with the following:

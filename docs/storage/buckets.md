@@ -1,17 +1,14 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Creating and Managing Buckets using the SDK or CLI
+# Creating and Managing Buckets
 
-## Overview
-
-Buckets in Rig are references to buckets in the different backends. To this end, Rig-buckets have both a unique name for Rig, and a provider name used when interacting with the backends. They also contain the region in which the bucket is created.
+Buckets in Rig are references to buckets in the connected backends. To this end, Rig-buckets have both a unique name for Rig, and a provider name used when interacting with the backends. They also contain the region in which the bucket is created.
 
 <hr class="solid" />
 
 ## Creating Buckets
-
-Creating buckets is done using the `CreateBucket` endpoint. The endpoint takes as input a name for the bucket, a provider name, and a region. The name is a unique in Rig, and the provider name is the name of the bucket in the backend. The region is the region in which the bucket is created. A list of available regions can be found in the [AWS documentation] for S3 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html), and in the [Google Cloud documentation] for GCS (https://cloud.google.com/storage/docs/locations). In case of a selfhosted Minio Server, the region does not make much sense, and can be left blank. If a bucket with the given provider name already exists in the backend, the bucket will be linked to Rig. If not, it will be created.
+Creating buckets is done using the `CreateBucket` endpoint. The endpoint takes as input a name for the bucket, a provider name, and a region. The name is unique in Rig, and the provider name is the name of the bucket in the backend. The region is the region in which the bucket is created. A list of available regions can be found in the [AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for S3, and the [Google Cloud documentation](https://cloud.google.com/storage/docs/locations) for GCS. In the case of a self-hosted Minio Server, the region does not make much sense and can be left blank. If a bucket with the given provider name already exists in the backend, the bucket will be linked to Rig. If not, it will be created.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -28,7 +25,7 @@ resp, err := client.Storage().CreateBucket(ctx, connect.NewRequest(&storage.Crea
 if err != nil {
   log.Fatal(err)
 }
-fmt.Printf("successfully created bucket")
+log.Printf("successfully created bucket")
 ```
 
 </TabItem>
@@ -43,7 +40,7 @@ const resp = await client.storagesClient.createBucket({
   region: "eu-central-1",
   ProviderId: providerID,
 });
-console.log("successfully created bucket");
+console.log("successfully created bucket \n");
 ```
 
 </TabItem>
@@ -67,7 +64,7 @@ Fields of the bucket are prompted for.
 
 ## Deleting Buckets
 
-As buckets in Rig are references to Buckets for the given providers, it is both possible to actually delete the buckets in the backend or simply unlink them to Rig. In order to delete a bucket, the endpoint `DeleteBucket`can be used. In order to simply unlink the bucket, the `UnlinkBucket`endpoint can be used. Both endpoints takes the rig bucket name as input.
+As buckets in Rig are references to Buckets for the given providers, it is possible to either delete the buckets in the backend or simply unlink them to Rig. To delete a bucket, the endpoint `DeleteBucket` can be used and to unlink the bucket, the `UnlinkBucket`endpoint can be used. Both endpoints take the Rig bucket name as input.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -80,7 +77,7 @@ resp, err := client.Storage().DeleteBucket(ctx, connect.NewRequest(&storage.Dele
 if err != nil {
   log.Fatal(err)
 }
-fmt.Printf("successfully deleted bucket")
+log.Printf("successfully deleted bucket \n")
 
 // Unlink a bucket
 resp, err := client.Storage().UnlinkBucket(ctx, connect.NewRequest(&storage.UnlinkBucketRequest{
@@ -89,7 +86,7 @@ resp, err := client.Storage().UnlinkBucket(ctx, connect.NewRequest(&storage.Unli
 if err != nil {
   log.Fatal(err)
 }
-fmt.Printf("successfully unlinked bucket")
+log.Printf("successfully unlinked bucket \n")
 ```
 
 </TabItem>
@@ -134,8 +131,7 @@ rig storage unlink-bucket my-bucket
 ## Fetching Buckets
 
 ### Getting a Bucket
-
-In order to get a bucket, the `GetBucket` endpoint can be used. The endpoint takes the rig bucket name as input, and returns the bucket object.
+To fetch a bucket, the `GetBucket` endpoint can be used. The endpoint takes the Rig bucket name as input and returns the bucket object.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -148,7 +144,7 @@ resp, err := client.Storage().GetBucket(ctx, connect.NewRequest(&storage.GetBuck
 if err != nil {
   log.Fatal(err)
 }
-fmt.Println("Succesfully retrieved bucket" + resp.Msg.GetBucket().String())
+log.Println("Succesfully retrieved bucket %s", resp.Msg.GetBucket().GetName())
 ```
 
 </TabItem>
@@ -180,7 +176,7 @@ rig storage get-bucket my-bucket --json
 
 ### Listing Buckets
 
-Listing using the SDK can be done using the `ListBuckets` endpoint. This will return all the buckets across the providers. The endpoint takes no input, and returns a list of buckets. In the CLI, this functionality is combined with listing of objects, and is done using the `list` command. When no path is given, the command will list all buckets, and when a path is given, it will list all objects in the given path. Refer to the [objects documentation](./manage-objects.md) for more information on listing objects.
+Listing buckets using the SDK can be done using the `ListBuckets` endpoint. This will return all Rig-buckets across the providers. The endpoint takes no input and returns a list of buckets. In the CLI, this functionality is combined with listing of objects and is done using the `list` command. When no path is given, the command will list all buckets, and when a path is given, it will list all objects in the given path. Refer to the [objects documentation](./manage-objects.md) for more information on listing objects.
 
 <Tabs>
 <TabItem value="go" label="Golang SDK">
@@ -190,7 +186,7 @@ resp, err := client.Storage().ListBuckets(ctx, connect.NewRequest(&storage.ListB
 if err != nil {
     log.Fatal(err)
 }
-fmt.Printf("successfully fetched %d buckets", len(resp.Msg.GetBuckets()))
+log.Printf("successfully fetched %d buckets \n", len(resp.Msg.GetBuckets()))
 ```
 
 </TabItem>
