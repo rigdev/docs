@@ -1,7 +1,7 @@
-import {RIG_CHART_VERSION} from "../../src/constants/versions"
+import {RIG_CHART_VERSION,RIG_IMAGE_VERSION} from "../../src/constants/versions"
 
 # Server Installation
-Rig can run both in a Kubernetes environment and a local Docker environment. 
+Rig can run both in a Kubernetes environment and a local Docker environment.
 
 ## Installation: Kubernetes
 Rig shines when it gets to run in a Kubernetes environment. It
@@ -47,25 +47,33 @@ And that's it, you're now ready to login on the dashboard at [http://localhost:4
 
 ## Installation: Docker
 
-First step is creating a new `docker-compose.yaml` file. Rig has one dependency, a Mongo database. The following `docker-compose.yaml` can be used if you want to spin up a new Mongo database with your Rig setup:
+First step is creating a new `docker-compose.yaml` file. Rig has a single dependency, a Mongo database. The following `docker-compose.yaml` can be used if you want to spin up Rig, together with a Mongo database:
 
-```yaml
-services:
+<pre><code className="language-yaml">{
+`services:
   rig:
-    image: ghcr.io/rigdev/rig:dev
+    image: ghcr.io/rigdev/rig:${RIG_IMAGE_VERSION}
     environment:
       RIG_AUTH_JWT_SECRET: mysecret
-      RIG_CLIENT_MONGODB_HOST: mongodb:27017
+      RIG_CLIENT_MONGO_HOST: mongo:27017
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "4747:4747"
-    network_mode: bridge
 
-  mongodb:
+  mongo:
     image: "mongo:latest"
-    network_mode: bridge
-```
+    volumes:
+    - mongo-data:/data'
+
+volumes:
+  mongo-data:
+
+networks:
+  default:
+    name: rig`}
+</code>
+</pre>
 
 Now spin up Rig with the following command:
 
