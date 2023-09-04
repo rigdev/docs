@@ -30,7 +30,7 @@ helm upgrade --install rig rig/rig \\
 </pre>
 
 For more detailed installation instructions on Kubernetes see the [self-hosting
-Kubernetes](kubernetes) section. For a full list of available values in the
+Kubernetes](/kubernetes) section. For a full list of available values in the
 helm chart see the [value
 file](https://github.com/rigdev/rig/blob/main/deploy/charts/rig/values.yaml).
 
