@@ -138,7 +138,7 @@ rig capsule create todo-demo
 Then make a Docker image of the TODO demo
 
 ```bash
-docker build -t todo-demo
+docker build -t todo-demo .
 ```
 
 This we will deploy to our new `todo-demo` capsule
