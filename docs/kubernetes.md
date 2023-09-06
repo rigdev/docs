@@ -24,7 +24,7 @@ Rig in a local Kubernetes environment or a real Kubernetes environment.
 <hr class="solid" />
 
 ## Dependencies
-To run Tig, we first need to have an available
+To run Rig, we first need to have an available
 [MongoDB](https://www.mongodb.com/) cluster and [Minio](https://min.io/) for
 object storage. We recommend using managed services in production
 environments. If you don't mind running these services your self follow along
