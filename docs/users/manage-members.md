@@ -27,7 +27,7 @@ if _, err := client.Group().AddMember(ctx, connect.NewRequest(&group.AddMemberRe
 })); err != nil {
     log.Fatal(err)
 }
-fmt.Println("successfully added users to group")
+log.Println("successfully added users to group")
 ```
 
 </TabItem>
@@ -80,7 +80,7 @@ if _, err := client.Group().RemoveMember(ctx, connect.NewRequest(&group.RemoveMe
 })); err != nil {
     log.Fatal(err)
 }
-fmt.Println("successfully removed user from group")
+log.Println("successfully removed user from group")
 ```
 
 </TabItem>
@@ -131,7 +131,7 @@ resp, _ := client.Group().ListMembers(ctx, connect.NewRequest(&group.ListMembers
         Limit:  10,
     },
 }))
-fmt.Printf("successfully fetched %d members. Total amount is: %d", len(resp.Msg.GetMembers()), resp.Msg.GetTotal())
+log.Printf("successfully fetched %d members. Total amount is: %d", len(resp.Msg.GetMembers()), resp.Msg.GetTotal())
 ```
 
 </TabItem>
