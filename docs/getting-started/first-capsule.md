@@ -37,9 +37,9 @@ Next, we need to create a build with the Nginx image for the capsule. This is do
 rig capsule create-build nginx-capsule --image nginx:latest
 ```
 
-From the command we should see an output similar to: `Image available as build <build-id>`
+From the command, we should see an output similar to: `Image available as build <build-id>`
 
-We can verify that the build was actually create by running:
+We can verify that the build was created by running:
 
 ```bash
 rig capsule list-builds nginx-capsule
