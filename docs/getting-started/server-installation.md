@@ -9,10 +9,10 @@ lowers the barrier of entry for engineers as they won't have to learn the
 complex APIs of Kubernetes.
 
 ### Requirements
-To run rig in Kubernetes, we first need to have an available
+To run Rig in Kubernetes, we first need to have an available
 [MongoDB](https://www.mongodb.com/) cluster, which Rig will use to store its
 data. We recommend using managed services in production environments. If you
-want to quickly test rig, the Rig helm chart can install a MongoDB for
+want to quickly test Rig, the Rig helm chart can install a MongoDB for
 you.
 
 ### Installation
@@ -35,8 +35,7 @@ helm chart see the [value
 file](https://github.com/rigdev/rig/blob/main/deploy/charts/rig/values.yaml).
 
 ### Create an Admin user
-
-Next step is to create yourself a new Admin user in your new Rig setup. The Rig docker image comes with a `rig-admin` tool, that can be used for exactly this:
+The next step is to create yourself a new Admin user in your new Rig setup. The Rig docker image comes with a `rig-admin` tool, that can be used for exactly this:
 
 ```bash
 kubectl exec --stdin --tty --namespace rig-system deploy/rig \
@@ -46,8 +45,7 @@ kubectl exec --stdin --tty --namespace rig-system deploy/rig \
 And that's it, you're now ready to login on the dashboard at [http://localhost:4747](http://localhost:4747).
 
 ## Installation: Docker
-
-First step is creating a new `docker-compose.yaml` file. Rig has a single dependency, a Mongo database. The following `docker-compose.yaml` can be used if you want to spin up Rig, together with a Mongo database:
+The first step is creating a new `docker-compose.yaml` file. Rig has a single dependency, a Mongo database. The following `docker-compose.yaml` can be used if you want to spin up Rig, together with a Mongo database:
 
 <pre><code className="language-yaml">{
 `services:
@@ -83,7 +81,7 @@ docker compose up -d
 
 ### Create an Admin user
 
-Next step is to create yourself a new Admin user in your new Rig setup. The Rig docker image comes with a `rig-admin` tool, that can be used for exactly this:
+The next step is to create yourself a new Admin user in your new Rig setup. The Rig docker image comes with a `rig-admin` tool, that can be used for exactly this:
 
 ```bash
 docker compose exec -it rig rig-admin users create --email myemail@example.com

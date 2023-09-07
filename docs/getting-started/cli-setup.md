@@ -20,7 +20,6 @@ brew install rigdev/tap/rig
 ```
 
 ### Binaries
-
 Rig can be installed manually by downloading a precompiled binary and adding
 it to your `$PATH`
 
@@ -29,7 +28,6 @@ architectures. Go to [the releases
 page](https://github.com/rigdev/rig/releases) to find yours.
 
 ### From source
-
 Installation from source requires the go toolchain to be installed.
 
 <pre><code className="language-bash">go install github.com/rigdev/rig/cmd/rig@{RIG_VERSION}</code></pre>
