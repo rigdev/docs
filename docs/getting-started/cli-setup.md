@@ -36,7 +36,7 @@ Installation from source requires the go toolchain to be installed.
 After installing Rig, you can login to the CLI by running:
 
 ```bash
-rig auth login --email=your@email.com
+rig auth login --user=your@email.com
 ```
 
 Then enter the password of your admin user. If you have not created any admin users yet, checkout the [manage admin users guide](/cluster/manage-admin-users) to get started.
