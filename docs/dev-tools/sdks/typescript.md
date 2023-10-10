@@ -2,9 +2,9 @@
 pagination_prev: null
 ---
 
-import InstallRig from '../../src/markdown/prerequisites/install-rig.md'
-import SetupCli from '../../src/markdown/prerequisites/setup-cli.md'
-import CreateCredential from '../../src/markdown/prerequisites/create-credential.md'
+import InstallRig from '../../../src/markdown/prerequisites/install-rig.md'
+import SetupCli from '../../../src/markdown/prerequisites/setup-cli.md'
+import CreateCredential from '../../../src/markdown/prerequisites/create-credential.md'
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
