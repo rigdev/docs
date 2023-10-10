@@ -7,7 +7,7 @@ mkdir oauth
 cd oauth
 ```
 
-and follow the instructions in the guide to [setup the Golang SDK](/sdks). You can also clone this example [here](https://github.com/rigdev/oauth-demo).
+and follow the instructions in the guide to [setup the Golang SDK](/dev-tools/sdks). You can also clone this example [here](https://github.com/rigdev/oauth-demo).
 
 ## Get API Keys and Credentials
 

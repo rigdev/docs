@@ -298,7 +298,7 @@ const sidebars = {
       label: "SDKs",
       link: {
         type: "doc",
-        id: "sdks",
+        id: "dev-tools/sdks",
       },
       className: "homepage-sidebar-item",
       customProps: {

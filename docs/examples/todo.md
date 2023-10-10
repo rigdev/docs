@@ -7,7 +7,7 @@ mkdir todo
 cd todo
 ```
 
-and follow the instructions in the guide to [setup the Golang SDK](/sdks). You can also clone this example [here](https://github.com/rigdev/todo-demo)
+and follow the instructions in the guide to [setup the Golang SDK](/dev-tools/sdks). You can also clone this example [here](https://github.com/rigdev/todo-demo)
 
 ## Simple TODO-list setup
 
@@ -459,7 +459,7 @@ window.addEventListener("load", () => {
 });
 ```
 
-Hopefully writing something in the text field under `Items`` and clicking the `Add New Item` button doesn't return an error, but we still have no way of seeing which items are stored for a particular user.
+Hopefully writing something in the text field under ` Items`` and clicking the  `Add New Item` button doesn't return an error, but we still have no way of seeing which items are stored for a particular user.
 
 ## Getting a user's items
 
