@@ -49,14 +49,14 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "getting-started/server-installation",
-          label: "Server Installation",
+          id: "getting-started/cli-install",
+          label: "CLI Installation",
           className: "docpage-sidebar-item",
         },
         {
           type: "doc",
-          id: "getting-started/cli-setup",
-          label: "CLI Setup",
+          id: "getting-started/platform-installation",
+          label: "Platform Installation",
           className: "docpage-sidebar-item",
         },
         {
@@ -116,120 +116,6 @@ const sidebars = {
       customProps: {
         sidebar_icon: "BiKey",
       },
-    },
-    {
-      type: "html",
-      value: "Modules",
-      className: "homepage-sidebar-divider",
-    },
-
-    {
-      type: "category",
-      label: "Users",
-      link: { type: "doc", id: "users" },
-      collapsed: true,
-      className: "homepage-sidebar-item",
-      customProps: {
-        sidebar_icon: "BiUser",
-      },
-      items: [
-        {
-          type: "doc",
-          id: "users/create-users",
-          label: "Creating Users",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/manage-users",
-          label: "Managing Users",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/delete-users",
-          label: "Deleting Users",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/create-groups",
-          label: "Creating Groups",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/manage-groups",
-          label: "Managing Groups",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/manage-members",
-          label: "Managing Members",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/delete-groups",
-          label: "Deleting Groups",
-          className: "docpage-sidebar-item",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Authentication",
-      className: "homepage-sidebar-item",
-      link: { type: "doc", id: "auth" },
-      collapsed: true,
-      customProps: {
-        sidebar_icon: "BiLock",
-      },
-      items: [
-        {
-          type: "doc",
-          id: "auth/register",
-          label: "Registering Users",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/login",
-          label: "User Login",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/social-login",
-          label: "Social Login",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/reset-password",
-          label: "Resetting Passwords",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/logout",
-          label: "User Logout",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/auth-settings",
-          label: "Auth Settings",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/auth-templates",
-          label: "Templates",
-          className: "docpage-sidebar-item",
-        },
-      ],
     },
     // {
     //   type: "category",
@@ -402,11 +288,17 @@ const sidebars = {
       className: "homepage-sidebar-divider",
     },
     {
+      type: "doc",
+      id: "dev-tools/cli",
+      label: "CLI",
+      className: "homepage-sidebar-item",
+    },
+    {
       type: "category",
       label: "SDKs",
       link: {
         type: "doc",
-        id: "sdks",
+        id: "dev-tools/sdks",
       },
       className: "homepage-sidebar-item",
       customProps: {
@@ -416,18 +308,132 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "sdks/golang",
+          id: "dev-tools/sdks/golang",
           label: "Golang",
           className: "docpage-sidebar-item",
         },
         {
           type: "doc",
-          id: "sdks/typescript",
+          id: "dev-tools/sdks/typescript",
           label: "Typescript",
           className: "docpage-sidebar-item",
         },
       ],
     },
+    {
+      type: "html",
+      value: "Modules",
+      className: "homepage-sidebar-divider",
+    },
+    {
+      type: "category",
+      label: "Users",
+      link: { type: "doc", id: "users" },
+      collapsed: true,
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiUser",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "users/create-users",
+          label: "Creating Users",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "users/manage-users",
+          label: "Managing Users",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "users/delete-users",
+          label: "Deleting Users",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "users/create-groups",
+          label: "Creating Groups",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "users/manage-groups",
+          label: "Managing Groups",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "users/manage-members",
+          label: "Managing Members",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "users/delete-groups",
+          label: "Deleting Groups",
+          className: "docpage-sidebar-item",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Authentication",
+      className: "homepage-sidebar-item",
+      link: { type: "doc", id: "auth" },
+      collapsed: true,
+      customProps: {
+        sidebar_icon: "BiLock",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "auth/register",
+          label: "Registering Users",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "auth/login",
+          label: "User Login",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "auth/social-login",
+          label: "Social Login",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "auth/reset-password",
+          label: "Resetting Passwords",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "auth/logout",
+          label: "User Logout",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "auth/auth-settings",
+          label: "Auth Settings",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "auth/auth-templates",
+          label: "Templates",
+          className: "docpage-sidebar-item",
+        },
+      ],
+    },
+
     {
       type: "html",
       value: "Additional Resources",

@@ -5,53 +5,92 @@ pagination_prev: null
 hide_feedback: true
 ---
 
-import DocCardList from '@theme/DocCardList';
+import DocCardList from "@theme/DocCardList";
 
 # Getting started
 
-Rig is an open-source application platform for Kubernetes that provides tools to build, deploy, and manage your applications. 
-It is built on top of Kubernetes, with support for running on Docker intended for development purposes.
+Rig is an application platform for Kubernetes that provides tools to build, deploy, and manage your applications.
+It is built on top of our open-source Kubernetes operator, with additional support for running on Docker, intended for local development.
 
-Rig supports deploying any containerized applications along with middleware to handle authentication and logging. 
-You can deploy already-built applications, or use Rig's modules to easily build, and then deploy your backends.
+Rig supports deploying any containerized applications. You can deploy already-built applications, or use Rig's CLI to easily develop and deploy your backends.
 
 In this document, you'll learn how to install Rig on **Docker** or **Kubernetes**, set up the CLI, and deploy your first Capsule.
 
 <hr class="solid" />
 
-## Install Rig on Docker or Kubernetes
-Rig can run in either Docker or Kubernetes. We suggest running Rig in Docker for local development
-and in Kubernetes for production workloads. 
-
-Install Rig using one of the two guides below:
-
-<DocCardList items={[
-  {
-    type: 'link',
-    href: '/getting-started/server-installation#installation-docker',
-    label: 'Run in Docker',
-    description: "Best for running locally on your computer",
-    customProps: {
-      icon: "docker",
-      col: "col--6"
-    }
-  },
-  {
-    type: 'link',
-    href: '/getting-started/server-installation#installation-kubernetes',
-    label: 'Run in Kubernetes',
-    description: "Best for running production workloads.",
-    customProps: {
-      icon: "kubernetes",
-      col: "col--6"
-    }
-  }
-]} />
-
 ## Install the Rig CLI
-You can use the Rig CLI to interact with resources and modules on the platform. Follow the [CLI guide](/getting-started/cli-setup#install) to install it.
+
+The Rig CLI is used to interact with the Rig Platform, both for local development and spinning up a local Rig Platform installation.
+
+<DocCardList
+  items={[
+    {
+      type: "link",
+      href: "/getting-started/cli-install",
+      label: "Install CLI",
+      description: "Tool for local development and Rig Platform interactions",
+      customProps: {
+        icon: "golang",
+        col: "col--12",
+      },
+    },
+  ]}
+/>
+
+<hr class="solid" />
+
+## Install Rig Platform for Local Development
+
+The Rig Platform can run locally in either Docker or Kubernetes. Install the Rig Platform using one of the two guides below:
+
+<DocCardList
+  items={[
+    {
+      type: "link",
+      href: "/getting-started/platform-installation#option-1-docker",
+      label: "Run in Docker",
+      description: "Best for rapid local development",
+      customProps: {
+        icon: "docker",
+        col: "col--6",
+      },
+    },
+    {
+      type: "link",
+      href: "/getting-started/platform-installation#option-2-kubernetes-kind",
+      label: "Run in Kubernetes (KIND)",
+      description: "Best for imitating production environment",
+      customProps: {
+        icon: "kubernetes",
+        col: "col--6",
+      },
+    },
+  ]}
+/>
+
+<hr class="solid" />
+
+## Install Rig Platform on Kubernetes cluster
+
+To install the Rig Platform on your existing Kubernetes cluster, follow the simple guide below.
+
+<DocCardList
+  items={[
+    {
+      type: "link",
+      href: "/getting-started/platform-installation#kubernetes-cluster-installation",
+      label: "Run in Kubernetes",
+      description: "Production environments for real-world workloads.",
+      customProps: {
+        icon: "kubernetes",
+        col: "col--12",
+      },
+    },
+  ]}
+/>
 
 <hr class="solid" />
 
 ## Deploy your first application
+
 Once Rig is installed, and the initial setup is complete, you are ready to deploy your first capsule. This can be an HTTP server, gRPC server, or something similar that you have built yourself or a Docker image that you want to deploy (like Nginx). Use the [application deployment guide](/capsules/create-deploy) to get started.
