@@ -1,4 +1,4 @@
-import {RIG_CHART_VERSION,RIG_IMAGE_VERSION} from "../../src/constants/versions"
+import {RIG_PLATFORM_CHART_VERSION} from "../../src/constants/versions"
 
 # Platform Installation
 
@@ -59,7 +59,7 @@ We will install the Rig Platform using Helm. This also installs the Rig Operator
 
 <pre><code className="language-bash">{`helm repo add rig https://charts.rig.dev
 helm upgrade --install rig rig/rig-platform \\
-  --version ${RIG_CHART_VERSION} \\
+  --version ${RIG_PLATFORM_CHART_VERSION} \\
   --namespace rig-system \\
   --create-namespace \\
   --set postgres.enabled=true  # Remove to not start a new PostgreSQL database.
