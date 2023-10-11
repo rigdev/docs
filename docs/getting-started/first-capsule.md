@@ -22,13 +22,13 @@ Using the CLI, we can create a capsule by running the following command:
 ### Create a capsule
 
 ```bash
-rig capsule create --name nginx-capsule
+rig capsule create -c nginx-capsule
 ```
 
 This will create an empty capsule called `nginx-capsule` with no additional resources. We can verify that the capsule was created by running:
 
 ```bash
-rig capsule list
+rig capsule get
 ```
 
 This will list all capsules in the current project, where you should see the capsule you just created.
@@ -38,15 +38,15 @@ This will list all capsules in the current project, where you should see the cap
 Next, we need to create a build with the Nginx image for the capsule. This is done using the following command:
 
 ```bash
-rig capsule create-build nginx-capsule --image nginx:latest
+rig capsule -c nginx-capsule build create --i nginx:latest
 ```
 
-From the command, we should see an output similar to: `Image available as build <build-id>`
+From the command, we should see an output similar to: `Created new build: <build-id>`
 
 We can verify that the build was created by running:
 
 ```bash
-rig capsule list-builds nginx-capsule
+rig capsule -c nginx-capsule build get
 ```
 
 This will list all builds for the capsule, where you should see the build you just created.
@@ -56,7 +56,7 @@ This will list all builds for the capsule, where you should see the build you ju
 Now that we have a build, we can deploy it in the nginx-capsule. This is done using the command:
 
 ```bash
-rig capsule deploy nginx-capsule --build-id <build-id>
+rig capsule -c nginx-capsule deploy --build-id <build-id>
 ```
 
 Where `<build-id>` is the id of the build you just created. This will create a rollout for the build, and deploy it with the default configuration. We can verify that the rollout was create by running:
@@ -83,19 +83,25 @@ docker ps
 
 to see the Nginx container running.
 
+We can also shortcut the creation of build and deployment by simply supplying the deploy command with the same image. This wil automatically create a corresponding build and deploy it. This can be done by running:
+
+```bash
+rig capsule -c nginx-capsule deploy -i nginx:latest
+```
+
 ### Scale the capsule
 
 Now that we have a running deployment, we can scale the number of replicas. This is done using the command:
 
 ```bash
-rig capsule scale nginx-capsule --replicas 3
+rig capsule -c nginx-capsule resource scale --replicas 3
 ```
 
 This will create a new rollout with the updated number of replicas. In order to verify this, you can run the previous commands to see the new changes reflected in the rollout and the pods/containers.
 
 ### Configure the network
 
-In order to expose the Nginx server to the public internet, we need to configure the network. This is done by creating a `network.yaml` file with the for example following content:
+In order to expose the Nginx server to the public internet,  This is donewe need to configure the network. by creating a `network.yaml` file with the for example following content:
 
 ```yaml
 interfaces:
@@ -111,7 +117,7 @@ interfaces:
 and then running the following command:
 
 ```bash
-rig capsule configure-network nginx-capsule network.yaml
+rig capsule -c nginx-capsule network configure network.yaml
 ```
 
 This will create a new rollout with the updated network configuration. Now open your favorite browser and navigate to [http://localhost:8081](http://localhost:8081) to see the Nginx server running. Well done, you have created and deployed and exposed your first capsule to Rig! 🎉
@@ -121,7 +127,7 @@ This will create a new rollout with the updated network configuration. Now open 
 The above guide executed every step of the process in each command explicitly. However, the CLI provides a shortcut for created, deploying and configuring the capsule in one command. This above could be achieved by running the following command:
 
 ```bash
-rig capsule create --name nginx-capsule --interactive
+rig capsule create -c nginx-capsule --interactive
 ```
 
 Which will take you through the process of creating a capsule, adding an image, configuring the network, setting the number of replicas and then deploying the capsule.

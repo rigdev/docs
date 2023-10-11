@@ -27,13 +27,13 @@ Rig uses the concept of capsules which is a collection of resources we create to
 To create the Capsule, from your terminal, run
 
 ```bash
-rig capsule create
+rig capsule create -i
 ```
 
-Your Capsule should now be ready and if you created it with an image and a non-zero replica count, you should be able to view its logs by running:
+Your Capsule should now be ready and if you created it with an image and deployed it, you should be able to view its logs by running:
 
 ```bash
-rig capsule logs <capsule-name>
+rig capsule -c <capsule-name> instance logs <instance-id>
 ```
 
 ## Create a Build
@@ -41,33 +41,39 @@ rig capsule logs <capsule-name>
 Builds contain information about how to deploy your application - eg. build env, args, and your Docker image. Let's assume that you have not created or rolled out any Builds yet, but wish to do so. Go to your application and create a new Docker tag:
 
 ```bash
-docker build -t mynewtag .
+docker build -t mynewimage .
 ```
 
 You can now create a new Build with that Docker image by running
 
 ```bash
-rig capsule create-build <capsule-name> --image mynewtag
+rig capsule -c <capsule-name> build create --image mynewimage
 ```
 
-This will upload the image to the Rig private container registry and create a Build. If successful, the method ends by printing the ID of your build, which is an incremental number starting from 1.
+This will upload the image to the Rig and create a Build.
 
 To view a list of your builds, run
 
 ```bash
-rig capsule list-builds <capsule-name>
+rig capsule -c <capsule-name> build get
 ```
 
-## Rollout a Build
+## Deploy an iamge
 
 You are now ready to run the build we just created. Rollout your build using the following command
 
 ```bash
-rig capsule deploy <capsule-name> --build-id <build-id>
+rig capsule -c <capsule-name> deploy --build-id <build-id>
+```
+
+We can also shortcut the creation of build and deployment by simply supplying the deploy command with the same image. This wil automatically create a corresponding build and deploy it. This can be done by running:
+
+```bash
+rig capsule -c <capsule-name> deploy -i mynewimage
 ```
 
 Lastly, you can scale your capsule to more instances. To scale the number of instances to 2 run
 
 ```bash
-rig capsule scale <capusle-name> --replicas 2
+rig capsule -c <capusle-name> resource scale --replicas 2
 ```
