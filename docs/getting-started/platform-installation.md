@@ -1,4 +1,7 @@
-import {RIG_PLATFORM_CHART_VERSION} from "../../src/constants/versions"
+import {
+    RIG_PLATFORM_CHART_VERSION,
+    RIG_OPERATOR_CHART_VERSION
+} from "../../src/constants/versions"
 
 # Platform Installation
 
@@ -57,8 +60,13 @@ Make sure your cluster has a Cert-Manager operator installed.
 
 We will install the Rig Platform using Helm. This also installs the Rig Operator, which enabled support for Capsules within the cluster.
 
-<pre><code className="language-bash">{`helm repo add rig https://charts.rig.dev
-helm upgrade --install rig rig/rig-platform \\
+<pre><code className="language-bash">{`helm upgrade --install rig-operator rig-operator \\
+  --repo https://charts.rig.dev \\
+  --version ${RIG_OPERATOR_CHART_VERSION} \\
+  --namespace rig-system \\
+  --create-namespace
+helm upgrade --install rig-platform rig-platform \\
+  --repo https://charts.rig.dev \\
   --version ${RIG_PLATFORM_CHART_VERSION} \\
   --namespace rig-system \\
   --create-namespace \\
