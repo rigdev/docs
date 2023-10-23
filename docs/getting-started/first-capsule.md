@@ -38,7 +38,7 @@ This will list all capsules in the current project, where you should see the cap
 Next, we need to create a build with the Nginx image for the capsule. This is done using the following command:
 
 ```bash
-rig capsule -c nginx-capsule build create --i nginx:latest
+rig capsule -c nginx-capsule build create --image nginx:latest
 ```
 
 From the command, we should see an output similar to: `Created new build: <build-id>`
