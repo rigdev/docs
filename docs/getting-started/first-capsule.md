@@ -101,7 +101,7 @@ This will create a new rollout with the updated number of replicas. In order to 
 
 ### Configure the network
 
-In order to expose the Nginx server to the public internet,  This is donewe need to configure the network. by creating a `network.yaml` file with the for example following content:
+In order to expose the Nginx server to the public internet, we need to configure the network. This is done by creating a `network.yaml` file, for example with the following content:
 
 ```yaml
 interfaces:
