@@ -193,31 +193,27 @@ const sidebars = {
       className: "homepage-sidebar-divider",
     },
     {
-      type: "category",
+      type: "doc",
+      id: "operator-manual/setup-guide",
       label: "Setup guide",
       className: "homepage-sidebar-item",
-      link: { type: "doc", id: "auth" },
-      // collapsed: true,
       customProps: {
-        sidebar_icon: "BiLock",
+        sidebar_icon: "BiKey",
       },
-      items: [],
     },
     {
-      type: "category",
+      type: "doc",
+      id: "operator-manual/architecture",
       label: "Architecture",
       className: "homepage-sidebar-item",
-      link: { type: "doc", id: "auth" },
-      // collapsed: true,
       customProps: {
-        sidebar_icon: "BiLock",
+        sidebar_icon: "BiKey",
       },
-      items: [],
     },
     {
       type: "category",
       label: "GitOps",
-      link: { type: "doc", id: "capsules" },
+      link: { type: "doc", id: "operator-manual/gitops" },
       className: "homepage-sidebar-item",
       customProps: {
         sidebar_icon: "BiCapsule",
@@ -226,45 +222,41 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "capsules/create-deploy",
+          id: "operator-manual/gitops/setup-with-flux",
           label: "Setup with Flux",
           className: "docpage-sidebar-item",
         },
         {
           type: "doc",
-          id: "capsules/manage-capsules",
+          id: "operator-manual/gitops/setup-with-argo-cd",
           label: "Setup with Argo CD",
           className: "docpage-sidebar-item",
         },
       ],
     },
     {
-      type: "category",
+      type: "doc",
+      id: "operator-manual/ingress",
       label: "Ingress",
       className: "homepage-sidebar-item",
-      link: { type: "doc", id: "auth" },
-      // collapsed: true,
       customProps: {
-        sidebar_icon: "BiLock",
+        sidebar_icon: "BiKey",
       },
-      items: [],
     },
     {
-      type: "category",
+      type: "doc",
+      id: "operator-manual/secrets",
       label: "Secrets",
       className: "homepage-sidebar-item",
-      link: { type: "doc", id: "auth" },
-      // collapsed: true,
       customProps: {
-        sidebar_icon: "BiLock",
+        sidebar_icon: "BiKey",
       },
-      items: [],
     },
     {
       type: "category",
       label: "CRD & Operator",
       className: "homepage-sidebar-item",
-      link: { type: "doc", id: "auth" },
+      link: { type: "doc", id: "operator-manual/crd-operator" },
       // collapsed: true,
       customProps: {
         sidebar_icon: "BiLock",
@@ -272,14 +264,12 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          id: "capsules/create-deploy",
+          id: "operator-manual/crd-operator/capsule",
           label: "Capsule Spec",
           className: "docpage-sidebar-item",
         },
       ],
     },
-
-
 
     {
       type: "html",
@@ -308,8 +298,6 @@ const sidebars = {
         sidebar_icon: "BiKey",
       },
     },
-
-
   ],
 };
 
