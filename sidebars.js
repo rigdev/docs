@@ -100,12 +100,6 @@ const sidebars = {
           label: "Manage Capsules",
           className: "docpage-sidebar-item",
         },
-        {
-          type: "doc",
-          id: "capsules/github-actions",
-          label: "Github Actions",
-          className: "docpage-sidebar-item",
-        },
       ],
     },
     {
