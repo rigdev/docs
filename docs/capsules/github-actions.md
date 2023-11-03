@@ -7,11 +7,12 @@ import TabItem from '@theme/TabItem';
 import ThemedImage from '@theme/ThemedImage';
 
 # Deploy your application to a Capsule using Github Actions
+
 In this document, you'll learn how to build and deploy your application automatically using [Github Actions](https://github.com/features/actions).
 
 ## Prerequisites
 
-It is assumed that you have a Rig Capsule up and running, see [Deploy Your Application](/capsules/create-deploy) if not. You should also have a GitHub repository that you would like to build and deploy to your capsule.
+It is assumed that you have a Rig Capsule up and running, see [Deploy Your Application](/capsules/create-deploy) if not. You should also have a GitHub repository from which you would like to build and deploy to your capsule.
 
 ## Example workflow using the actions
 
@@ -21,10 +22,11 @@ As you need a Docker image to build and deploy, it is common to prefix these two
 The following GitHub workflow example showcases how you can
 
 1. Build a Docker image from a new commit
-2. Make a Rig build from that Docker image
-3. Deploy that Rig build to your Rig capsule
+2. Push that Docker image to Docker Hub
+3. Make a Rig build from that Docker image
+4. Deploy that Rig build to your Rig capsule
 
-You can choose your own `buildID` in the `build` action, or if not provided the `buildID` will be the first 10 characters of the Git commit SHA.
+In this example a username and password to Dockerhub is stored as a Github secret in the repository of the workflow. The same is done with the client secret to the Rig project
 
 ```yaml
 on: [push]
@@ -35,35 +37,42 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: YOUR_DOCKER_HUB_USERNAME
-          password: YOUR_DOCKER_HUB_PASSWORD
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: YOUR_DOCKER_IMAGE
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/DOCKER_IMAGE_NAME:latest
+
       - name: Build Rig
-        uses: rigdev/actions/build@v1
+        uses: rigdev/actions/build@v2
         id: build_rig
         with:
-          clientID: YOUR_SERVICE_ACCOUNT_ID_FOR_YOUR_CAPSULE
-          clientSecret: YOUR_SERVICE_ACCOUNT_SECRET_FOR_YOUR_CAPSULE
-          url: URL_TO_YOUR_RIG_CLUSTER
-          image: YOUR_DOCKER_IMAGE
-          capsuleID: YOUR_CAPSULE_ID
+          url: url-to-rig-cluster
+          project: YOUR_PROJECT_NAME
+          clientID: YOUR_ID
+          clientSecret: ${{ secrets.RIG_PROJECT_CLIENT_SECRET }}
+          image: ${{ secrets.DOCKER_HUB_USERNAME }}/DOCKER_IMAGE_NAME:latest
+          capsule: YOUR_CAPSULE
+
       - name: Deploy to capsule
-        uses: rigdev/actions/deploy@v1
+        uses: rigdev/actions/deploy@update
         with:
-          clientID: YOUR_SERVICE_ACCOUNT_ID_FOR_YOUR_CAPSULE
-          clientSecret: YOUR_SERVICE_ACCOUNT_SECRET_FOR_YOUR_CAPSULE
-          url: URL_TO_YOUR_RIG_CLUSTER
-          capsuleID: YOUR_CAPSULE_ID
-          buildID: ${{ steps.build_rig.outputs.buildID }}
+          url: url-to-rig-cluster
+          project: YOUR_PROJECT_NAME
+          clientID: YOUR_ID
+          clientSecret: ${{ secrets.RIG_PROJECT_CLIENT_SECRET }}
+          capsule: YOUR_CAPSULE
+          build: ${{ steps.build_rig.outputs.build }}
 ```
