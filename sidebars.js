@@ -126,7 +126,7 @@ const sidebars = {
       label: "Container Registries",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiSolidFolderOpen",
+        sidebar_icon: "TbCategoryFilled",
       },
     },
     {

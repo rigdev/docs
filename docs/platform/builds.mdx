@@ -2,13 +2,13 @@
 
 Builds are a shallow abstraction on top of Container Images.
 
-To create a new build, simply insert the docker image and click "Create build". The platform will validate the build against the Container Registry, defaulting to `index.docker.io` if omitted.
+To create a new build, simply insert the container image and click "Create build". The platform will validate the build against the Container Registry, defaulting to `index.docker.io` if omitted.
 
-If the build fails due to an Authentication error and the Container Registry is private, be sure to check if Authentication is configured for the Docker Registry.
-See [Docker Registries](/platform/docker-registries) for more information.
+If the build fails due to an Authentication error and the Container Registry is private, be sure to check if Authentication is configured for the Container Registry.
+See [Container Registries](/platform/container-registries) for more information.
 
 :::info Validation Skip
-If the Rig Platform cannot access the Docker Registry for some reason, the validation step can be omitted.
+If the Rig Platform cannot access the Container Registry for some reason, the validation step can be omitted.
 :::
 
 ### Deploying
