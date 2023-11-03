@@ -271,7 +271,7 @@ const sidebars = {
       type: "category",
       label: "CRD & Operator",
       className: "homepage-sidebar-item",
-      link: { type: "doc", id: "operator-manual/crd-operator" },
+      link: { type: "doc", id: "operator-manual/crd-operator/main" },
       // collapsed: true,
       customProps: {
         sidebar_icon: "BiLock",
