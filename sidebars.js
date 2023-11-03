@@ -128,8 +128,8 @@ const sidebars = {
     },
     {
       type: "doc",
-      id: "platform/docker-registries",
-      label: "Docker Registries",
+      id: "platform/container-registries",
+      label: "Container Registries",
       className: "homepage-sidebar-item",
       customProps: {
         sidebar_icon: "BiKey",
