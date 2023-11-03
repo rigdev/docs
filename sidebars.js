@@ -163,6 +163,15 @@ const sidebars = {
       },
     },
     {
+      type: "doc",
+      id: "platform/scale",
+      label: "Scale",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiArea",
+      },
+    },
+    {
       type: "category",
       label: "CI/CD",
       link: { type: "doc", id: "platform/ci-cd" },
