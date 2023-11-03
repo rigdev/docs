@@ -108,7 +108,7 @@ const sidebars = {
       label: "Builds",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "BiBox",
       },
     },
     {
@@ -117,7 +117,7 @@ const sidebars = {
       label: "Rollouts",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "TbPlayerTrackNextFilled",
       },
     },
     {
@@ -126,7 +126,7 @@ const sidebars = {
       label: "Container Registries",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "BiSolidFolderOpen",
       },
     },
     {
@@ -135,7 +135,7 @@ const sidebars = {
       label: "Config Files",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "BiSolidFile",
       },
     },
     {
@@ -144,7 +144,7 @@ const sidebars = {
       label: "Container Settings",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "SiLinuxcontainers",
       },
     },
     {
@@ -153,7 +153,7 @@ const sidebars = {
       label: "Network Interfaces",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "BiSolidNetworkChart",
       },
     },
     {
@@ -171,7 +171,7 @@ const sidebars = {
       link: { type: "doc", id: "platform/ci-cd" },
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiCapsule",
+        sidebar_icon: "SiGit",
       },
       collapsed: true,
       items: [
@@ -180,12 +180,18 @@ const sidebars = {
           id: "platform/ci-cd/github-actions",
           label: "GitHub Actions",
           className: "docpage-sidebar-item",
+          customProps: {
+            sidebar_icon: "SiGithub",
+          },
         },
         {
           type: "doc",
           id: "platform/ci-cd/circle-ci",
           label: "CircleCI [Preview]",
           className: "docpage-sidebar-item",
+          customProps: {
+            sidebar_icon: "SiCircleci",
+          },
         },
       ],
     },
@@ -210,7 +216,7 @@ const sidebars = {
       label: "Architecture",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "BiSolidLayout",
       },
     },
     {
@@ -219,7 +225,7 @@ const sidebars = {
       link: { type: "doc", id: "operator-manual/gitops" },
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiCapsule",
+        sidebar_icon: "SiGit",
       },
       collapsed: true,
       items: [
@@ -228,12 +234,18 @@ const sidebars = {
           id: "operator-manual/gitops/setup-with-flux",
           label: "Setup with Flux",
           className: "docpage-sidebar-item",
+          customProps: {
+            sidebar_icon: "SiFlux",
+          },
         },
         {
           type: "doc",
           id: "operator-manual/gitops/setup-with-argo-cd",
           label: "Setup with Argo CD",
           className: "docpage-sidebar-item",
+          customProps: {
+            sidebar_icon: "SiArgo",
+          },
         },
       ],
     },
@@ -243,7 +255,7 @@ const sidebars = {
       label: "Ingress",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "SiIngress",
       },
     },
     {
@@ -270,6 +282,9 @@ const sidebars = {
           id: "operator-manual/crd-operator/capsule",
           label: "Capsule Spec",
           className: "docpage-sidebar-item",
+          customProps: {
+            sidebar_icon: "TbCodeDots",
+          },
         },
       ],
     },
