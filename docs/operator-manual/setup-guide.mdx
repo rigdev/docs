@@ -1,3 +1,8 @@
+import {
+RIG_PLATFORM_CHART_VERSION,
+RIG_OPERATOR_CHART_VERSION
+} from "../../src/constants/versions"
+
 # Setup guide
 
 ## Kubernetes Cluster Installation
@@ -25,8 +30,7 @@ Make sure your cluster has a Cert-Manager operator installed.
 
 We will install the Rig Platform using [Helm](https://helm.sh). This also installs the Rig Operator, which enables support for Capsules within the cluster.
 
-```bash
-helm upgrade --install rig-operator rig-operator \\
+<pre><code className="language-bash">{`helm upgrade --install rig-operator rig-operator \\
   --repo https://charts.rig.dev \\
   --version ${RIG_OPERATOR_CHART_VERSION} \\
   --namespace rig-system \\
@@ -37,7 +41,9 @@ helm upgrade --install rig-platform rig-platform \\
   --namespace rig-system \\
   --create-namespace \\
   --set postgres.enabled=true  # Remove to not start a new PostgreSQL database.
-```
+`}
+</code>
+</pre>
 
 :::info Note
 See [Kubernetes](/kubernetes) for more information about how to connect to your own database, and other configuration options.
