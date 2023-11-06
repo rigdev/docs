@@ -220,34 +220,35 @@ const sidebars = {
       },
     },
     {
-      type: "category",
+      type: "doc",
+      id: "operator-manual/gitops",
       label: "GitOps",
-      link: { type: "doc", id: "operator-manual/gitops" },
+      //link: { type: "doc", id: "operator-manual/gitops" },
       className: "homepage-sidebar-item",
       customProps: {
         sidebar_icon: "SiGit",
       },
-      collapsed: true,
-      items: [
-        {
-          type: "doc",
-          id: "operator-manual/gitops/setup-with-flux",
-          label: "Setup with Flux",
-          className: "docpage-sidebar-item",
-          customProps: {
-            sidebar_icon: "SiFlux",
-          },
-        },
-        {
-          type: "doc",
-          id: "operator-manual/gitops/setup-with-argo-cd",
-          label: "Setup with Argo CD",
-          className: "docpage-sidebar-item",
-          customProps: {
-            sidebar_icon: "SiArgo",
-          },
-        },
-      ],
+      //collapsed: true,
+      //items: [
+      //  {
+      //    type: "doc",
+      //    id: "operator-manual/gitops/setup-with-flux",
+      //    label: "Setup with Flux",
+      //    className: "docpage-sidebar-item",
+      //    customProps: {
+      //      sidebar_icon: "SiFlux",
+      //    },
+      //  },
+      //  {
+      //    type: "doc",
+      //    id: "operator-manual/gitops/setup-with-argo-cd",
+      //    label: "Setup with Argo CD",
+      //    className: "docpage-sidebar-item",
+      //    customProps: {
+      //      sidebar_icon: "SiArgo",
+      //    },
+      //  },
+      //],
     },
     {
       type: "doc",

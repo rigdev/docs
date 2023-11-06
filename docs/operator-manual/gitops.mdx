@@ -1,1 +1,22 @@
 # GitOps
+
+GitOps has become a popular way of managing changes to kubernetes cluster
+resources. If you want to know more about gitops, head over to weaveworks and
+read about it https://www.weave.works/technologies/gitops/
+
+The rig platform has initial support for committing the changes it does to
+Kubernetes resources to a git repository, instead of actually doing the changes
+them. This can be paired with flux or argocd, to have the rig-platform tied
+well into your existing gitops workflow.
+
+It is currently not possible to set this configuration directly through the
+helm chart, but it can be set if you manually manage the configuration. See the
+section about [manual configuration](/operator-manual/secrets).
+
+## Flux
+
+We will soon have a small example repo of how this could look using flux.
+
+## ArgoCD
+
+We will soon have a small example repo of how this could look using ArgoCD.
