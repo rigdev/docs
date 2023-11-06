@@ -207,7 +207,7 @@ const sidebars = {
       label: "Setup guide",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "BiWrench",
       },
     },
     {
@@ -268,27 +268,14 @@ const sidebars = {
       },
     },
     {
-      type: "category",
+      type: "doc",
+      id: "operator-manual/crd-operator",
       label: "CRD & Operator",
       className: "homepage-sidebar-item",
-      link: { type: "doc", id: "operator-manual/crd-operator/main" },
-      // collapsed: true,
       customProps: {
-        sidebar_icon: "BiLock",
+        sidebar_icon: "BiDna",
       },
-      items: [
-        {
-          type: "doc",
-          id: "operator-manual/crd-operator/capsule",
-          label: "Capsule Spec",
-          className: "docpage-sidebar-item",
-          customProps: {
-            sidebar_icon: "TbCodeDots",
-          },
-        },
-      ],
     },
-
     {
       type: "html",
       value: "Dev Tools",
