@@ -35,7 +35,8 @@
     "react-uuid": "^2.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.4.3"
+    "@docusaurus/module-type-aliases": "^2.4.3",
+    "prettier": "3.0.3"
   },
   "browserslist": {
     "production": [

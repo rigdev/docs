@@ -100,186 +100,181 @@ const sidebars = {
           label: "Manage Capsules",
           className: "docpage-sidebar-item",
         },
-        {
-          type: "doc",
-          id: "capsules/github-actions",
-          label: "Github Actions",
-          className: "docpage-sidebar-item",
-        },
       ],
     },
     {
       type: "doc",
-      id: "service-accounts",
-      label: "Service Accounts",
+      id: "platform/builds",
+      label: "Builds",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
-      },
-    },
-    // {
-    //   type: "category",
-    //   label: "Database",
-    //   link: { type: "doc", id: "database" },
-    //   className: "homepage-sidebar-item",
-    //   customProps: {
-    //     sidebar_icon: "BiData",
-    //   },
-    //   collapsed: true,
-    //   items: [
-    //     {
-    //       type: "doc",
-    //       id: "database/connect-mongo",
-    //       label: "Connecting to MongoDB",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "database/create-database",
-    //       label: "Creating Databases",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "database/manage-database",
-    //       label: "Managing Databases",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "database/delete-database",
-    //       label: "Deleting Databases",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "database/create-credential",
-    //       label: "Creating Credentials",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "database/delete-credential",
-    //       label: "Deleting Credentials",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //   ],
-    // },
-    // {
-    //   type: "category",
-    //   label: "Storage",
-    //   link: { type: "doc", id: "storage" },
-    //   className: "homepage-sidebar-item",
-    //   customProps: {
-    //     sidebar_icon: "BiFolder",
-    //   },
-    //   collapsed: true,
-    //   items: [
-    //     {
-    //       type: "doc",
-    //       id: "storage/providers",
-    //       label: "Providers",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "storage/buckets",
-    //       label: "Buckets",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "storage/manage-objects",
-    //       label: "Managing Objects",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "storage/uploading-objects",
-    //       label: "Uploading Objects",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "storage/downloading-objects",
-    //       label: "Downloading Objects",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "storage/gcs",
-    //       label: "Setup Google Cloud Storage",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "storage/minio",
-    //       label: "Setup Minio Storage",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //     {
-    //       type: "doc",
-    //       id: "storage/s3",
-    //       label: "Setup Amazon S3 Storage",
-    //       className: "docpage-sidebar-item",
-    //     },
-    //   ],
-    // },
-    {
-      type: "html",
-      value: "Self-Hosting",
-
-      className: "homepage-sidebar-divider",
-    },
-    {
-      type: "doc",
-      id: "configuration",
-      label: "Configuration",
-      className: "homepage-sidebar-item",
-      customProps: {
-        sidebar_icon: "BiCog",
+        sidebar_icon: "BiBox",
       },
     },
     {
       type: "doc",
-      id: "kubernetes",
-      label: "Kubernetes",
+      id: "platform/rollouts",
+      label: "Rollouts",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "kubernetes",
+        sidebar_icon: "TbPlayerTrackNextFilled",
+      },
+    },
+    {
+      type: "doc",
+      id: "platform/container-registries",
+      label: "Container Registries",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "TbCategoryFilled",
+      },
+    },
+    {
+      type: "doc",
+      id: "platform/config-files",
+      label: "Config Files",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiSolidFile",
+      },
+    },
+    {
+      type: "doc",
+      id: "platform/container-settings",
+      label: "Container Settings",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "SiLinuxcontainers",
+      },
+    },
+    {
+      type: "doc",
+      id: "platform/network-interfaces",
+      label: "Network Interfaces",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiSolidNetworkChart",
+      },
+    },
+    {
+      type: "doc",
+      id: "platform/scale",
+      label: "Scale",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiArea",
       },
     },
     {
       type: "category",
-      label: "Cluster Management",
-      link: { type: "doc", id: "cluster" },
+      label: "CI/CD",
+      link: { type: "doc", id: "platform/ci-cd" },
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiBuilding",
+        sidebar_icon: "SiGit",
       },
       collapsed: true,
       items: [
         {
           type: "doc",
-          id: "cluster/access-admin-cli",
-          label: "Use the Admin CLI",
+          id: "platform/ci-cd/github-actions",
+          label: "GitHub Actions",
           className: "docpage-sidebar-item",
+          customProps: {
+            sidebar_icon: "SiGithub",
+          },
         },
         {
           type: "doc",
-          id: "cluster/manage-admin-users",
-          label: "Manage Admin Users",
+          id: "platform/ci-cd/circle-ci",
+          label: "CircleCI [Preview]",
           className: "docpage-sidebar-item",
+          customProps: {
+            sidebar_icon: "SiCircleci",
+          },
         },
       ],
     },
+
+    {
+      type: "html",
+      value: "Operator Manual",
+      className: "homepage-sidebar-divider",
+    },
     {
       type: "doc",
-      id: "usage",
-      label: "Usage",
+      id: "operator-manual/setup-guide",
+      label: "Setup guide",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiKey",
+        sidebar_icon: "BiWrench",
+      },
+    },
+    {
+      type: "doc",
+      id: "operator-manual/architecture",
+      label: "Architecture",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiSolidLayout",
+      },
+    },
+    // {
+    //   type: "doc",
+    //   id: "operator-manual/gitops",
+    //   label: "GitOps",
+    //   //link: { type: "doc", id: "operator-manual/gitops" },
+    //   className: "homepage-sidebar-item",
+    //   customProps: {
+    //     sidebar_icon: "SiGit",
+    //   },
+    //collapsed: true,
+    //items: [
+    //  {
+    //    type: "doc",
+    //    id: "operator-manual/gitops/setup-with-flux",
+    //    label: "Setup with Flux",
+    //    className: "docpage-sidebar-item",
+    //    customProps: {
+    //      sidebar_icon: "SiFlux",
+    //    },
+    //  },
+    //  {
+    //    type: "doc",
+    //    id: "operator-manual/gitops/setup-with-argo-cd",
+    //    label: "Setup with Argo CD",
+    //    className: "docpage-sidebar-item",
+    //    customProps: {
+    //      sidebar_icon: "SiArgo",
+    //    },
+    //  },
+    //],
+    // },
+    {
+      type: "doc",
+      id: "operator-manual/ingress",
+      label: "Ingress",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "SiIngress",
+      },
+    },
+    // {
+    //   type: "doc",
+    //   id: "operator-manual/secrets",
+    //   label: "Secrets",
+    //   className: "homepage-sidebar-item",
+    //   customProps: {
+    //     sidebar_icon: "BiKey",
+    //   },
+    // },
+    {
+      type: "doc",
+      id: "operator-manual/crd-operator",
+      label: "CRD & Operator",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiDna",
       },
     },
     {
@@ -293,203 +288,21 @@ const sidebars = {
       label: "CLI",
       className: "homepage-sidebar-item",
     },
-    {
-      type: "category",
-      label: "SDKs",
-      link: {
-        type: "doc",
-        id: "dev-tools/sdks",
-      },
-      className: "homepage-sidebar-item",
-      customProps: {
-        sidebar_icon: "BiCode",
-      },
-      collapsed: true,
-      items: [
-        {
-          type: "doc",
-          id: "dev-tools/sdks/golang",
-          label: "Golang",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "dev-tools/sdks/typescript",
-          label: "Typescript",
-          className: "docpage-sidebar-item",
-        },
-      ],
-    },
-    {
-      type: "html",
-      value: "Modules",
-      className: "homepage-sidebar-divider",
-    },
-    {
-      type: "category",
-      label: "Users",
-      link: { type: "doc", id: "users" },
-      collapsed: true,
-      className: "homepage-sidebar-item",
-      customProps: {
-        sidebar_icon: "BiUser",
-      },
-      items: [
-        {
-          type: "doc",
-          id: "users/create-users",
-          label: "Creating Users",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/manage-users",
-          label: "Managing Users",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/delete-users",
-          label: "Deleting Users",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/create-groups",
-          label: "Creating Groups",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/manage-groups",
-          label: "Managing Groups",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/manage-members",
-          label: "Managing Members",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "users/delete-groups",
-          label: "Deleting Groups",
-          className: "docpage-sidebar-item",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Authentication",
-      className: "homepage-sidebar-item",
-      link: { type: "doc", id: "auth" },
-      collapsed: true,
-      customProps: {
-        sidebar_icon: "BiLock",
-      },
-      items: [
-        {
-          type: "doc",
-          id: "auth/register",
-          label: "Registering Users",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/login",
-          label: "User Login",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/social-login",
-          label: "Social Login",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/reset-password",
-          label: "Resetting Passwords",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/logout",
-          label: "User Logout",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/auth-settings",
-          label: "Auth Settings",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "auth/auth-templates",
-          label: "Templates",
-          className: "docpage-sidebar-item",
-        },
-      ],
-    },
 
     {
       type: "html",
       value: "Additional Resources",
       className: "homepage-sidebar-divider",
     },
+
     {
-      type: "category",
-      label: "Examples",
+      type: "doc",
+      id: "usage",
+      label: "Usage",
       className: "homepage-sidebar-item",
       customProps: {
-        sidebar_icon: "BiHardHat",
+        sidebar_icon: "BiKey",
       },
-      collapsed: true,
-      items: [
-        {
-          type: "doc",
-          id: "examples/todo",
-          label: "TODO-List Web App",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "examples/oauth",
-          label: "User Management - OAuth",
-          className: "docpage-sidebar-item",
-        },
-        // {
-        //   type: "doc",
-        //   id: "examples/database",
-        //   label: "Database",
-        //   className: "docpage-sidebar-item",
-        // },
-      ],
-    },
-    {
-      type: "category",
-      label: "Migration",
-      className: "homepage-sidebar-item",
-      customProps: {
-        sidebar_icon: "BiImport",
-      },
-      collapsed: true,
-      items: [
-        {
-          type: "doc",
-          id: "migration/custom",
-          label: "Custom",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "migration/firebase",
-          label: "Firebase",
-          className: "docpage-sidebar-item",
-        },
-      ],
     },
   ],
 };
