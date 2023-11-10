@@ -19,7 +19,7 @@ function useDocTOC() {
   
   const windowSize = useWindowSize();
   const hidden = frontMatter.hide_table_of_contents;
-  const hideFeedback = frontMatter.hide_feedback;
+  const hideFeedback = true;
   const hideFooter = frontMatter.hide_footer;
   const canRender = !hidden && toc.length > 0;
   const mobile = canRender ? <DocItemTOCMobile /> : undefined;

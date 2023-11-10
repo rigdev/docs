@@ -62,30 +62,25 @@ export default function NavbarContent() {
         </>
       }
       right={
-        // TODO stop hardcoding items?
-        // Ask the user to add the respective navbar items => more flexible
+        // // TODO stop hardcoding items?
+        // // Ask the user to add the respective navbar items => more flexible
         <>
-          <div style={{marginRight: "15px"}}>
-            <Link href='/'>
-              Docs
-            </Link>
-          </div>
-          <div style={{marginRight: "50px"}}>
+          {/* <div style={{marginRight: "50px"}}>
             <Link href='https://buf.build/rigdev/rig'>
               API
             </Link>
-          </div>
+          </div> */}
           <div style={{marginRight: "5px"}}>
             <Button width='35px' height='35px' textAlign='center' onClick={() => window.open("https://github.com/rigdev/rig")}> 
               <div style={{color: "var(--ifm-color-emphasis-700)", display: "block", justifyContent: "center", alignItems: "center"}}>
-                  <DynamicBiIcon size={15} name={"github"}/>
+                  <DynamicBiIcon size={15} name={"BiLogoGithub"}/>
               </div>
             </Button>
           </div>
           <div style={{marginRight: "5px"}}>
             <Button width='35px' height='35px' textAlign='center' onClick={() => window.open("https://discord.gg/Tn5wmXMM2U")}> 
               <div style={{color: "var(--ifm-color-emphasis-700)", display: "block", justifyContent: "center", alignItems: "center"}}>
-                  <DynamicBiIcon size={15} name={"discord"}/>
+                  <DynamicBiIcon size={15} name={"BiLogoDiscordAlt"}/>
               </div>
             </Button>
           </div>

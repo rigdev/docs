@@ -9,7 +9,6 @@ const config = {
   title: 'Rig Docs',
   tagline: 'Explore and learn how to use Rig',
   favicon: 'img/favicon.ico',
-
   // Set the production url of your site here
   url: 'https://rig.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -63,9 +62,8 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve('./menu.js'),
           // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/rigdev/docs/edit/main/',
           showLastUpdateAuthor: true,
           routeBasePath: '/', // Serve the docs at the site's root

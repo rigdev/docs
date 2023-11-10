@@ -1,8 +1,3 @@
----
-pagination_next: null
-pagination_prev: null
----
-
 # CLI Installation
 
 import {RIG_VERSION} from "../../src/constants/versions"
