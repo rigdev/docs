@@ -5,6 +5,7 @@
  - provide next/previous navigation
 
  The sidebars can be generated from the filesystem, or explicitly defined here.
+
  */
 
 // @ts-check
