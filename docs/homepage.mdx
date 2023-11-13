@@ -11,9 +11,10 @@ hide_feedback: false
 ---
 
 import DocCardList from "@theme/DocCardList";
+import CardCategory from "@theme/DocCard";
 import Button from "../src/components/Button";
 
-# Rig.dev Documentation
+![Rig.dev documentation](/img/banners/docs-banner.png "Rig.dev documentation")
 
 The Rig Platform offers an application platform for Kubernetes.
 Rig empower developers to work in their own environments with elevated application abstractions,
@@ -29,26 +30,26 @@ The platform includes a Dashboard, CLI, and CI/CD hooks, as well as numerous way
 <DocCardList
   items={[
     {
-      type: "link",
+      type: "block",
       href: "/getting-started",
       label: "Run Rig on your machine",
       description:
         "Rig enhances Local Development by running directly on your machine using either Docker or KIND.",
       customProps: {
-        icon: "BiLaptop",
         col: "col--6",
       },
+      cover: "/img/banners/local-machine.png",
     },
     {
-      type: "link",
+      type: "block",
       href: "/operator-manual/setup-guide",
       label: "Install Rig in a Kubernetes cluster",
       description:
         "Install Rig in your own Kubernetes cluster, allowing you to run Capsules in a matter of minutes",
       customProps: {
-        icon: "SiKubernetes",
         col: "col--6",
       },
+      cover: "/img/banners/kubernetes.png",
     },
   ]}
 />

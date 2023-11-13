@@ -174,6 +174,16 @@ const sidebars = {
         sidebar_icon: "SiGit",
       },
     },
+    {
+      type: "doc",
+      id: "platform/service-accounts",
+      label: "Service Accounts",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiKey",
+      },
+    },
+
     //   items: [
     //     {
     //       type: "doc",

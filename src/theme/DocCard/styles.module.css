@@ -34,3 +34,7 @@
   font-size: 14px !important;
   color: var(--ifm-color-emphasis-600);
 }
+
+.cardIcon {
+  margin-bottom: 10px;
+}
