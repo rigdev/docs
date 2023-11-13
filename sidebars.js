@@ -166,35 +166,34 @@ const sidebars = {
       },
     },
     {
-      type: "category",
+      type: "doc",
+      id: "platform/ci-cd",
       label: "CI/CD",
-      link: { type: "doc", id: "platform/ci-cd" },
       className: "homepage-sidebar-item",
       customProps: {
         sidebar_icon: "SiGit",
       },
-      collapsed: true,
-      items: [
-        {
-          type: "doc",
-          id: "platform/ci-cd/github-actions",
-          label: "GitHub Actions",
-          className: "docpage-sidebar-item",
-          customProps: {
-            sidebar_icon: "SiGithub",
-          },
-        },
-        {
-          type: "doc",
-          id: "platform/ci-cd/circle-ci",
-          label: "CircleCI [Preview]",
-          className: "docpage-sidebar-item",
-          customProps: {
-            sidebar_icon: "SiCircleci",
-          },
-        },
-      ],
     },
+    //   items: [
+    //     {
+    //       type: "doc",
+    //       id: "platform/ci-cd/github-actions",
+    //       label: "GitHub Actions",
+    //       className: "docpage-sidebar-item",
+    //       customProps: {
+    //         sidebar_icon: "SiGithub",
+    //       },
+    //     },
+    //     {
+    //       type: "doc",
+    //       id: "platform/ci-cd/circle-ci",
+    //       label: "CircleCI [Preview]",
+    //       className: "docpage-sidebar-item",
+    //       customProps: {
+    //         sidebar_icon: "SiCircleci",
+    //       },
+    //     },
+    //   ],
 
     {
       type: "html",
