@@ -16,15 +16,14 @@ It is assumed that you have a Rig Capsule up and running, see [Deploy Your Appli
 
 ## Example workflow using the actions
 
-Rig exposes [two different actions](https://github.com/rigdev/actions), `build` and `deploy`. The `build` action assumes you have a Docker image you want to deploy and makes a Rig build off of it. The `deploy` action can then deploy the previously (or any other) generated build to a capsule.
+Rig exposes [two different actions](https://github.com/rigdev/actions), `build` and `deploy`. The `build` action assumes you have a Docker image you want to deploy and makes a Rig build off of it. The `deploy` action can then deploy the previously (or any other) generated build to a capsule. It is also possible to let the `build` action deploy the newly created build to the capsule.
 As you need a Docker image to build and deploy, it is common to prefix these two actions with [Docker Github actions](https://docs.docker.com/build/ci/github-actions/) to build and publish an image.
 
 The following GitHub workflow example showcases how you can
 
 1. Build a Docker image from a new commit
 2. Push that Docker image to Docker Hub
-3. Make a Rig build from that Docker image
-4. Deploy that Rig build to your Rig capsule
+3. Make a Rig build from that Docker image and deploy it to the capsule
 
 In this example a username and password to Dockerhub is stored as a Github secret in the repository of the workflow. The same is done with the client secret to the Rig project
 
@@ -55,9 +54,9 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/DOCKER_IMAGE_NAME:latest
 
-      - name: Build Rig
-        uses: rigdev/actions/build@v2
-        id: build_rig
+      - name: Make build and deploy to the Rig capsule
+        uses: rigdev/actions/build@v2.1
+        id: build_deploy_rig
         with:
           url: url-to-rig-cluster
           project: YOUR_PROJECT_NAME
@@ -65,14 +64,5 @@ jobs:
           clientSecret: ${{ secrets.RIG_PROJECT_CLIENT_SECRET }}
           image: ${{ secrets.DOCKER_HUB_USERNAME }}/DOCKER_IMAGE_NAME:latest
           capsule: YOUR_CAPSULE
-
-      - name: Deploy to capsule
-        uses: rigdev/actions/deploy@update
-        with:
-          url: url-to-rig-cluster
-          project: YOUR_PROJECT_NAME
-          clientID: YOUR_ID
-          clientSecret: ${{ secrets.RIG_PROJECT_CLIENT_SECRET }}
-          capsule: YOUR_CAPSULE
-          build: ${{ steps.build_rig.outputs.build }}
+          deploy: true
 ```
