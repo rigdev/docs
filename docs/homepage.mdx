@@ -16,87 +16,102 @@ import Button from "../src/components/Button";
 # Rig.dev Documentation
 
 The Rig Platform offers an application platform for Kubernetes.
-We empower developers to work in their own environments with elevated application abstractions,
+Rig empower developers to work in their own environments with elevated application abstractions,
 while still leveraging Kubernetes's reliability, portability, and scalability.
 
-Our developer-friendly deployment engine simplifies the process of rolling out, managing, debugging and scaling applications.
-The platform includes a Dashboard, CLI, and CI/CD pipelines that seamlessly integrate with GitHub Actions.
-
-<Button
-  width="125px"
-  backgroundColor="var(--ifm-color-emphasis-900)"
-  children=<font style={{ color: "var(--ifm-color-emphasis-100)" }} size="3">
-    {" "}
-    Get Started{" "}
-  </font>
-  onClick={() => {
-    window.open("getting-started", "_self");
-  }}
-/>
-  
-
-<br />
+The developer-friendly deployment engine simplifies the process of rolling out, managing, debugging and scaling applications.
+The platform includes a Dashboard, CLI, and CI/CD hooks, as well as numerous ways of integrating with existing pipelines, such as GitOps.
 
 <hr class="solid" />
 
-# Topics
-
-[![Capsules](/img/banners/capsules-banner.png "Capsules")](/capsules)
-
-# Toolkit
+# Getting Started
 
 <DocCardList
   items={[
     {
       type: "link",
-      href: "/dev-tools/cli",
-      label: "Rig CLI",
-      description: "Manage any Rig-resources from the command line.",
-      customProps: {
-        icon: "BiTerminal",
-        col: "col--4",
-      },
-    },
-    {
-      type: "link",
-      href: "/service-accounts",
-      label: "Service Accounts",
-      description: "Manage your service accounts and their permissions.",
-      customProps: {
-        icon: "BiKey",
-        col: "col--4",
-      },
-    },
-    {
-      type: "link",
-      href: "/cluster",
-      label: "Rig Cluster",
-      description: "Manage your Rig cluster with admin users and an admin CLI.",
-      customProps: {
-        icon: "BiServer",
-        col: "col--4",
-      },
-    },
-    {
-      type: "link",
-      href: "/dev-tools/sdks/golang",
-      label: "Go Client",
+      href: "/getting-started",
+      label: "Run Rig on your machine",
       description:
-        "Build your own backend using the Rig Go SDK and the Rig Modules.",
+        "Rig enhances Local Development by running directly on your machine using either Docker or KIND.",
       customProps: {
-        icon: "golang",
+        icon: "BiLaptop",
         col: "col--6",
       },
     },
     {
       type: "link",
-      href: "/dev-tools/sdks/typescript",
-      label: "Typescript Client",
+      href: "/operator-manual/setup-guide",
+      label: "Install Rig in a Kubernetes cluster",
       description:
-        "Use the Rig TS client and Rig modules to easily integrate Rig into your application",
+        "Install Rig in your own Kubernetes cluster, allowing you to run Capsules in a matter of minutes",
       customProps: {
-        icon: "typescript",
+        icon: "SiKubernetes",
         col: "col--6",
+      },
+    },
+  ]}
+/>
+
+<hr class="solid" />
+
+# Explore Rig
+
+<DocCardList
+  items={[
+    {
+      type: "link",
+      href: "/operator-manual/architecture",
+      label: "Rig Architecture",
+      description:
+        "Explore how the Rig platform interactions your Kubernetes cluster.",
+      customProps: {
+        icon: "BiSolidLayout",
+        col: "col--6",
+      },
+    },
+    {
+      type: "link",
+      href: "/operator-manual/gitops",
+      label: "GitOps flow",
+      description:
+        "Rig comes with built-in support for the most common GitOps workflows.",
+      customProps: {
+        icon: "SiGit",
+        col: "col--6",
+      },
+    },
+    {
+      type: "link",
+      href: "/platform/ci-cd/github-actions",
+      label: "GitHub Actions",
+      description:
+        "Use the CI/CD hooks to deploy directly from your GitHub Actions.",
+      customProps: {
+        icon: "SiGithub",
+        col: "col--4",
+      },
+    },
+    {
+      type: "link",
+      href: "/operator-manual/crd-operator",
+      label: "Capsule Spec",
+      description:
+        "Check out the Rigs Capsule Spec, our the behavior associated with it.",
+      customProps: {
+        icon: "BiDna",
+        col: "col--4",
+      },
+    },
+    {
+      type: "link",
+      href: "/platform/rollouts",
+      label: "Rollout and Rollbacks",
+      description:
+        "The Rig platform makes it intuitive to rollout your changes to production",
+      customProps: {
+        icon: "TbPlayerTrackNextFilled",
+        col: "col--4",
       },
     },
   ]}
