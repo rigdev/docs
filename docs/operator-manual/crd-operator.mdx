@@ -1,7 +1,3 @@
----
-pagination_prev: null
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import ThemedImage from '@theme/ThemedImage';

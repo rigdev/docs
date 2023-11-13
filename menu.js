@@ -6,7 +6,6 @@
 
  The sidebars can be generated from the filesystem, or explicitly defined here.
 
- Create as many sidebars as you want.
  */
 
 // @ts-check
@@ -25,15 +24,6 @@ const sidebars = {
   // ],
 
   homepage: [
-    // {
-    //   type: "doc",
-    //   id: "homepage",
-    //   label: "Overview",
-    //   className: "homepage-sidebar-item",
-    //   customProps: {
-    //     sidebar_icon: "BiHomeAlt",
-    //   },
-    // },
     {
       type: "category",
       label: "Getting Started",
@@ -301,22 +291,19 @@ const sidebars = {
     },
     {
       type: "html",
-      value: "Dev Tools",
-      className: "homepage-sidebar-divider",
-    },
-    {
-      type: "doc",
-      id: "dev-tools/cli",
-      label: "CLI",
-      className: "homepage-sidebar-item",
-    },
-
-    {
-      type: "html",
       value: "Additional Resources",
       className: "homepage-sidebar-divider",
     },
 
+    {
+      type: "doc",
+      id: 'additional-links',
+      label: "Additional Links",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiLink",
+      },
+    },
     {
       type: "doc",
       id: "usage",

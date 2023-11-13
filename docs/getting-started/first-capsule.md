@@ -11,13 +11,6 @@ Capsules then contain rollouts, which are deployments of a build to a specific e
 ## Deploy Nginx in a Rig Capsule
 
 This guide will take you through the process of deploying an Nginx Server to Rig using the CLI.
-If you did not create a project with the [Rig CLI](/dev-tools/cli), you can create one now by running:
-
-```bash
-rig project create --name my-first-project --use
-```
-
-Using the CLI, we can create a capsule by running the following command:
 
 ### Create a capsule
 

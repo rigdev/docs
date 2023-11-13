@@ -11,7 +11,8 @@ export default function DocItemPaginator() {
 
   return (
     <dig>
-      {(metadata?.previous || metadata?.next) && (
+      {(false) && (
+      // {(metadata?.previous || metadata?.next) && (
         <div>
           <hr class="solid" />
           <h2>

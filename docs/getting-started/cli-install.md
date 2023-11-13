@@ -1,8 +1,3 @@
----
-pagination_next: null
-pagination_prev: null
----
-
 # CLI Installation
 
 import {RIG_VERSION} from "../../src/constants/versions"
@@ -37,4 +32,4 @@ Installation from source requires the go toolchain to be installed.
 
 ## Next step
 
-Use the [Getting Started guide](/getting-started) to continue installing the Rig Platform, or continue with the [Rig CLI](/dev-tools/cli) if you already have a Rig Platform running.
+Use the [Getting Started guide](/getting-started) to continue installing the Rig Platform.
