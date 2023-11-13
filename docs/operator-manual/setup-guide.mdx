@@ -106,6 +106,13 @@ See [Kubernetes](/kubernetes) for more information about how to connect to your
 own database, and other configuration options.
 :::
 
+After installing the Rig Platform you'll need to run the following command to setup an admin user
+
+```bash
+kubectl exec -it --namespace rig-system deploy/rig-platform \
+  -- rig-admin init
+```
+
 ### Configuration
 
 The Rig Operator and Platform both have a `values.yaml` file which specify how
@@ -117,3 +124,10 @@ defaults can be found here
 
 To overwrite a default value when deploying, use `--set FIELD=VALUE` flags when
 running `helm`.
+
+### Connect to the Rig Platform remotely
+After setting up Rig, users who want to connect to it remotely can run the following command using their local Rig CLI
+```bash
+rig config init
+```
+which will guide the user trough connecting to Rig.
