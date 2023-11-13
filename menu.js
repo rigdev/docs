@@ -69,28 +69,13 @@ const sidebars = {
       className: "homepage-sidebar-divider",
     },
     {
-      type: "category",
+      type: "doc",
       label: "Capsules",
-      link: { type: "doc", id: "capsules" },
+      id: "capsules",
       className: "homepage-sidebar-item",
       customProps: {
         sidebar_icon: "BiCapsule",
       },
-      collapsed: true,
-      items: [
-        {
-          type: "doc",
-          id: "capsules/create-deploy",
-          label: "Deploy your Application",
-          className: "docpage-sidebar-item",
-        },
-        {
-          type: "doc",
-          id: "capsules/manage-capsules",
-          label: "Manage Capsules",
-          className: "docpage-sidebar-item",
-        },
-      ],
     },
     {
       type: "doc",

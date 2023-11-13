@@ -27,7 +27,7 @@ The Rig CLI is used to interact with the Rig Platform, both for local developmen
       label: "Install CLI",
       description: "Tool for local development and Rig Platform interactions",
       customProps: {
-        icon: "golang",
+        icon: "TbTerminal2",
         col: "col--12",
       },
     },
@@ -48,7 +48,7 @@ The Rig Platform can run locally in either Docker or Kubernetes. Install the Rig
       label: "Run in Docker",
       description: "Best for rapid local development",
       customProps: {
-        icon: "docker",
+        icon: "BiLogoDocker",
         col: "col--6",
       },
     },
@@ -58,7 +58,7 @@ The Rig Platform can run locally in either Docker or Kubernetes. Install the Rig
       label: "Run in Kubernetes (KIND)",
       description: "Best for imitating production environment",
       customProps: {
-        icon: "kubernetes",
+        icon: "BiLogoKubernetes",
         col: "col--6",
       },
     },
@@ -79,15 +79,9 @@ To install the Rig Platform on your existing Kubernetes cluster, follow the simp
       label: "Run in Kubernetes",
       description: "Production environments for real-world workloads.",
       customProps: {
-        icon: "kubernetes",
+        icon: "BiLogoKubernetes",
         col: "col--12",
       },
     },
   ]}
 />
-
-<hr class="solid" />
-
-## Deploy your first application
-
-Once Rig is installed, and the initial setup is complete, you are ready to deploy your first capsule. This can be an HTTP server, gRPC server, or something similar that you have built yourself or a Docker image that you want to deploy (like Nginx). Use the [application deployment guide](/capsules/create-deploy) to get started.
