@@ -222,12 +222,12 @@ const sidebars = {
           label: "Ingress",
           className: "docpage-sidebar-item",
         },
-        // {
-        //   type: "doc",
-        //   id: "operator-manual/configuration-secrets",
-        //   label: "Configuration Secrets",
-        //   className: "docpage-sidebar-item",
-        // },
+        {
+          type: "doc",
+          id: "operator-manual/configuration-secrets",
+          label: "Configuration Secrets",
+          className: "docpage-sidebar-item",
+        },
       ],
     },
 
