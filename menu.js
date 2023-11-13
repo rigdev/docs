@@ -157,6 +157,15 @@ const sidebars = {
     },
     {
       type: "doc",
+      id: "platform/instance-overview",
+      label: "Instance Overview",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "BiOutline",
+      },
+    },
+    {
+      type: "doc",
       id: "platform/ci-cd",
       label: "CI/CD",
       className: "homepage-sidebar-item",
@@ -297,7 +306,7 @@ const sidebars = {
 
     {
       type: "doc",
-      id: 'additional-links',
+      id: "additional-links",
       label: "Additional Links",
       className: "homepage-sidebar-item",
       customProps: {
