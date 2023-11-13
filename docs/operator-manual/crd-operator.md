@@ -8,7 +8,13 @@ import ThemedImage from '@theme/ThemedImage';
 
 # CRD & Operator
 
-The foundation of Rig is our Capsule CRD (CustomResourceDefinition). The Rig Operator will spawn all derived Kubernetes resources as defined by a Capsule resource. It will also watch these derived resources and undo any changes applied to them which conflicts with their Capsule parent. Updating these resources can only be done by updating the corresponding capsule spec.
+The foundation of Rig is our Capsule CRD (CustomResourceDefinition). The Rig Operator will spawn all derived Kubernetes resources as defined by a Capsule resource. It will also watch these derived resources and undo any changes applied to them which conflicts with their Capsule parent. Updating these resources can only be done by updating the corresponding capsule spec. The resources we spawn are
+
+- [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+- [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
+- [TLS Certificate](https://cert-manager.io/docs/reference/api-docs/#cert-manager.io/v1.Certificate)
+- [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+- [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 
 ConfigMaps and Secrets used by a capsule is not owned by the capsule though. These will be created by the Platform and can be updated independently of the capsules. The operator, however, will watch those config files and redeploy instances if configs or secrets they depend on have been changed.
 
