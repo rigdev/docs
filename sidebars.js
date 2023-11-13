@@ -201,14 +201,36 @@ const sidebars = {
       className: "homepage-sidebar-divider",
     },
     {
-      type: "doc",
-      id: "operator-manual/setup-guide",
-      label: "Setup guide",
+      type: "category",
+      label: "Setup-guide",
+      link: { type: "doc", id: "operator-manual/setup-guide" },
       className: "homepage-sidebar-item",
       customProps: {
         sidebar_icon: "BiWrench",
       },
+      collapsed: true,
+      items: [
+        {
+          type: "doc",
+          id: "operator-manual/database",
+          label: "Database",
+          className: "docpage-sidebar-item",
+        },
+        {
+          type: "doc",
+          id: "operator-manual/ingress",
+          label: "Ingress",
+          className: "docpage-sidebar-item",
+        },
+        // {
+        //   type: "doc",
+        //   id: "operator-manual/configuration-secrets",
+        //   label: "Configuration Secrets",
+        //   className: "docpage-sidebar-item",
+        // },
+      ],
     },
+
     {
       type: "doc",
       id: "operator-manual/architecture",
@@ -249,15 +271,6 @@ const sidebars = {
     //  },
     //],
     // },
-    {
-      type: "doc",
-      id: "operator-manual/ingress",
-      label: "Ingress",
-      className: "homepage-sidebar-item",
-      customProps: {
-        sidebar_icon: "SiIngress",
-      },
-    },
     // {
     //   type: "doc",
     //   id: "operator-manual/secrets",
