@@ -1,29 +1,23 @@
----
-sidebar_position: 1
----
+# Database
 
-import {RIG_CHART_VERSION} from "../../src/constants/versions"
+Rig uses a database to store its data. Rig currently supports two database
+backends, either mongodb or postgres. This article explains how to configure
+each of them.
 
-# Kubernetes
+When installing the rig helm chart the value `postgres.enabled` toggles a small
+single instance postgres. This is only meant for development environments and
+not production. For production environments we recommend that you use a managed
+database at your cloud provider, or another for of production ready database.
 
-## Port-forward
+The `rig-platform` container will at startup connect to the database, and print
+any error there may be if wrongly configured.
 
-When rig is running you can reach the rig API by doing a portforward or
-if inside the cluster you can use the service directly.
+To connect rig to your own database please follow the steps below.
 
-```bash
-kubectl port-forward -n rig-system svc/rig-platform-svc 4747
-```
+## Postgres
 
-<hr class="solid" />
-
-## Database setup
-
-The Rig Platform uses a database to store its data, support both PostgreSQL and MongoDB. To connect to your own database, use the steps below.
-
-### PostgreSQL
-
-To connect to your own PostgreSQL database, you need to fill out the following section of your Helm values file:
+To connect to your own PostgreSQL database, you need to fill out the following
+section of your helm values:
 
 ```yaml
 rig:
@@ -36,11 +30,10 @@ rig:
       database: rig
 ```
 
-The `rig-platform` container will at startup connect to the database, and print any error there may be if wrongly configured.
+## MongoDB
 
-### MongoDB
-
-Alternatively, MongoDB can be used. Supply the following Helm values to configure your database.
+To connect to your own MongoDB database, you need to fill out the following
+section of your helm values:
 
 ```yaml
 rig:
@@ -49,35 +42,16 @@ rig:
       host: <host-and-port>
       user: <username>
       password: <password>
-
-  repository:
-    capsule:
-      store: mongodb
-    credential:
-      store: mongodb
-    group:
-      store: mongodb
-    user:
-      store: mongodb
-    session:
-      store: mongodb
-    project:
-      store: mongodb
-    secret:
-      store: mongodb
-    cluster_config:
-      store: mongodb
-    service_account:
-      store: mongodb
-    verification_code:
-      store: mongodb
 ```
 
-<hr class="solid" />
+## Encryption at rest
 
-## Additional configuration options
+In order to make rig encrypt secrets stored in the database, you will need to
+setup an encryption key. This is done through the following helm value:
 
-For more detailed installation instructions on Kubernetes see the self-hosting
-Kubernetes section. For a full list of available values in the
-helm chart see the [value
-file](https://github.com/rigdev/rig/blob/main/deploy/charts/rig-platform/values.yaml).
+```yaml
+rig:
+  repository:
+    secret:
+      key: <your secret>
+```
