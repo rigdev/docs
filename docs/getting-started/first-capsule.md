@@ -55,7 +55,7 @@ rig capsule -c nginx-capsule deploy --build-id <build-id>
 Where `<build-id>` is the id of the build you just created. This will create a rollout for the build, and deploy it with the default configuration. We can verify that the rollout was create by running:
 
 ```bash
-rig capsule list-rollouts nginx-capsule
+rig capsule rollout get nginx-capsule
 ```
 
 This will list all rollouts for the capsule, where you should see one for the deployment you just initiated.
@@ -87,7 +87,7 @@ rig capsule -c nginx-capsule deploy -i nginx:latest
 Now that we have a running deployment, we can scale the number of replicas. This is done using the command:
 
 ```bash
-rig capsule -c nginx-capsule resource scale --replicas 3
+rig capsule -c nginx-capsule resource scale horizontal --replicas 3
 ```
 
 This will create a new rollout with the updated number of replicas. In order to verify this, you can run the previous commands to see the new changes reflected in the rollout and the pods/containers.
