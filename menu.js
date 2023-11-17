@@ -234,15 +234,15 @@ const sidebars = {
         sidebar_icon: "BiSolidLayout",
       },
     },
-    // {
-    //   type: "doc",
-    //   id: "operator-manual/gitops",
-    //   label: "GitOps",
-    //   //link: { type: "doc", id: "operator-manual/gitops" },
-    //   className: "homepage-sidebar-item",
-    //   customProps: {
-    //     sidebar_icon: "SiGit",
-    //   },
+    {
+      type: "doc",
+      id: "operator-manual/gitops",
+      label: "GitOps",
+      className: "homepage-sidebar-item",
+      customProps: {
+        sidebar_icon: "SiGit",
+      }
+    },
     //collapsed: true,
     //items: [
     //  {
