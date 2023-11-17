@@ -1,14 +1,14 @@
 # Deploy your first capsule
 
-Now that you have a configured Rig server up and running, and you have installed the CLI, you are ready to deploy your first capsule. This will be a short introduction to capsules, and how to deploy a containerized application to Rig using the CLI.
+Now that you have a configured Rig platform up and running, and you have installed the CLI, you are ready to deploy your first capsule. This will be a short introduction to capsules, and how to deploy a containerized application to Rig using the CLI.
 
 ## What is a capsule?
 
-In Rig the concept of a capsule encapsulates (😉) a collection of resources on Rig, that is used to manage and run an application.
+In Rig a capsule encapsulates (😉) a collection of resources on Rig, that is used to manage and run an application.
 Capsules contain builds, which hold information on how to deploy the application: which container image to use, git repository, etc.
 Capsules then contain rollouts, which are deployments of a build to a specific environment and network network configuration. Rollouts are immutable and are used to manage the lifecycle of the application. This means that when the deployed build is updated, the number of replicas is changed or when a different environment or network configuration is used, a new rollout is automatically created.
 
-## Deploy Nginx in a Rig Capsule
+## Deploy Nginx in a Rig Capsule Using the CLI
 
 This guide will take you through the process of deploying an Nginx Server to Rig using the CLI.
 
@@ -33,6 +33,7 @@ Next, we need to create a build with the Nginx image for the capsule. This is do
 ```bash
 rig capsule -c nginx-capsule build create --image nginx:latest
 ```
+Note that if you are on an arm chip, you should the arm version of the image, 'arm64v8/nginx:latest'.
 
 From the command, we should see an output similar to: `Created new build: <build-id>`
 
@@ -92,6 +93,23 @@ rig capsule -c nginx-capsule scale horizontal --replicas 3
 
 This will create a new rollout with the updated number of replicas. In order to verify this, you can run the previous commands to see the new changes reflected in the rollout and the pods/containers.
 
+### Set Static Content
+Instead of the default content, we can mount a config file to the container. This is done by creating an `index.html` file with some content, for example:
+  
+```html
+<html>
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>
+```
+
+and then running the following command:
+  
+```bash
+rig capsule -c nginx-capsule mount set --src index.html --dst /usr/share/nginx/html/index.html
+```
+
 ### Configure the network
 
 In order to expose the Nginx server to the public internet, we need to configure the network. This is done by creating a `network.yaml` file, for example with the following content:
@@ -115,7 +133,8 @@ rig capsule -c nginx-capsule network configure network.yaml
 
 This will create a new rollout with the updated network configuration. Now open your favorite browser and navigate to [http://localhost:8081](http://localhost:8081) to see the Nginx server running. Well done, you have created and deployed and exposed your first capsule to Rig! 🎉
 
-## Shortcut
+
+### Shortcut
 
 The above guide executed every step of the process in each command explicitly. However, the CLI provides a shortcut for created, deploying and configuring the capsule in one command. This above could be achieved by running the following command:
 
@@ -124,3 +143,5 @@ rig capsule create -c nginx-capsule --interactive
 ```
 
 Which will take you through the process of creating a capsule, adding an image, configuring the network, setting the number of replicas and then deploying the capsule.
+
+## Deploy Nginx in a Rig Capsule using the Dashboard
