@@ -1,3 +1,5 @@
+This repository has been archived. Please refer to https://github.com/rigdev/rig/tree/main/docs for the continued work.
+
 # Website
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
